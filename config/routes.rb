@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
+  get 'routes/new'
+
+  get 'routes/create'
+
+  get 'routes/show'
+
+  get 'routes/edit'
+
+  get 'routes/update'
+
+  get 'routes/destroy'
+
   resources :railway_stations
   resources :trains
   root 'railway_stations#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
 end
