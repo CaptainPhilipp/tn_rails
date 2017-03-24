@@ -1,3 +1,2 @@
-class RailwayStation < ApplicationRecord
-  validates :title, presence: true
+class Route < ApplicationRecord
 end
