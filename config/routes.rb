@@ -1,18 +1,8 @@
 Rails.application.routes.draw do
-  get 'routes/new'
-
-  get 'routes/create'
-
-  get 'routes/show'
-
-  get 'routes/edit'
-
-  get 'routes/update'
-
-  get 'routes/destroy'
-
   resources :railway_stations
   resources :trains
+  resources :routes # это имелось в виду? а то мало ли, может вручную каждый
+
   root 'railway_stations#index'
-  
+
 end
