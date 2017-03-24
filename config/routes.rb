@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :railway_stations
   resources :trains
-  resources :routes # это имелось в виду? а то мало ли, может вручную каждый
+  # resources :routes # это имелось в виду? а то мало ли, может вручную каждый
   get    '/routes',         to: 'routes#index'
   get    '/routes/new',     to: 'routes#new'
   post   '/routes',         to: 'routes#create'

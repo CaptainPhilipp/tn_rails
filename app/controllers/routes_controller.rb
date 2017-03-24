@@ -1,15 +1,29 @@
 class RoutesController < ApplicationController
-  def index; end
+  def index
+    @routes = Route.all
+  end
 
-  def new; end
+  def new
+    @route = Route.new
+  end
 
-  def create; end
+  def create
+    # TODO
+  end
 
-  def show; end
+  def show
+    # TODO
+  end
 
-  def edit; end
+  def edit
+    # TODO
+  end
 
-  def update; end
+  def update
+    # TODO
+  end
 
-  def destroy; end
+  def destroy
+    # TODO
+  end
 end
