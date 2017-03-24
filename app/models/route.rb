@@ -1,3 +1,3 @@
 class RailwayStation < ApplicationRecord
-  validates :title_short, presence: true
+  validates :title, presence: true
 end
