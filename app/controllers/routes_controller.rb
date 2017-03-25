@@ -5,29 +5,36 @@ class RoutesController < ApplicationController
     @routes = Route.all
   end
 
+  def show
+  end
+
   def new
     @route = Route.new
   end
 
   def create
-    @route = Route.create(route_params)
-    render @route
-  end
-
-  def show
+    @route = Route.new(route_params)
+    if @route.save
+      redirect_to @route
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @route.update(route_params)
-    @route.reload
-    render :edit
+    if @route.update(route_params)
+      render :show
+    else
+      render :edit
+    end
   end
 
   def destroy
     @route.delete
+    redirect_to routes_path
   end
 
   private
