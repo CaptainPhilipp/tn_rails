@@ -1,0 +1,7 @@
+p#notice = notice
+
+p
+  strong Title: 
+  = @route.title
+
+. #{link_to 'Edit', edit_route_path(@route)} | #{link_to 'Back', routes_path}

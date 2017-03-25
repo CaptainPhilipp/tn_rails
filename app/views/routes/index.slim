@@ -1,0 +1,17 @@
+h1 Маршруты
+
+p#notice = notice
+
+table
+  thead
+    th title
+    th collspan="3"
+
+  tbody
+    - @routes.each do |route|
+      tr
+        td = route.title
+        td = link_to 'Show', route
+        td = link_to 'Edit', edit_route_path(route)
+        td = link_to 'Delete', route, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'New Route', new_route_path
