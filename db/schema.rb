@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325225057) do
+ActiveRecord::Schema.define(version: 20170325231817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20170325225057) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "route_id"
-    t.integer  "railway_station_id"
-    t.index ["railway_station_id"], name: "index_trains_on_railway_station_id", using: :btree
+    t.integer  "current_station_id"
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +66,5 @@ ActiveRecord::Schema.define(version: 20170325225057) do
   add_foreign_key "tickets", "railway_stations", column: "departure_id"
   add_foreign_key "tickets", "trains"
   add_foreign_key "tickets", "users"
-  add_foreign_key "trains", "railway_stations"
+  add_foreign_key "trains", "railway_stations", column: "current_station_id"
 end
