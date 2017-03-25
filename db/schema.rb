@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325214328) do
+ActiveRecord::Schema.define(version: 20170325231817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20170325214328) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "train_id"
-    t.integer  "route_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["route_id"], name: "index_tickets_on_route_id", using: :btree
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "departure_id"
+    t.integer  "arrival_id"
     t.index ["train_id"], name: "index_tickets_on_train_id", using: :btree
     t.index ["user_id"], name: "index_tickets_on_user_id", using: :btree
   end
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20170325214328) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "route_id"
-    t.integer  "railway_station_id"
-    t.index ["railway_station_id"], name: "index_trains_on_railway_station_id", using: :btree
+    t.integer  "current_station_id"
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,8 +62,9 @@ ActiveRecord::Schema.define(version: 20170325214328) do
 
   add_foreign_key "railway_stations_routes", "railway_stations"
   add_foreign_key "railway_stations_routes", "routes"
-  add_foreign_key "tickets", "routes"
+  add_foreign_key "tickets", "railway_stations", column: "arrival_id"
+  add_foreign_key "tickets", "railway_stations", column: "departure_id"
   add_foreign_key "tickets", "trains"
   add_foreign_key "tickets", "users"
-  add_foreign_key "trains", "railway_stations"
+  add_foreign_key "trains", "railway_stations", column: "current_station_id"
 end
