@@ -1,0 +1,14 @@
+= form_for(route) do |f|
+  - if route.errors.any?
+    div#error_explanation
+      h2 #{pluralize(route.errors.count, "error")}:
+      ul
+        - route.errors.full_messages.each do |msg|
+          li msg
+  
+  div.field
+    = f.label :title
+    = f.text_field :title
+  
+  div.actions
+    = f.submit
