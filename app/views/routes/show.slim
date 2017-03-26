@@ -4,17 +4,17 @@ p
   strong Title: 
   = @route.title
   
-div
+ul
   strong Станции маршрута
-  - @stations.each do |station|
-    div = link_to station.title, railway_station_path(station)
+  - @route.railway_stations.each do |station|
+    li = link_to station.title, railway_station_path(station)
 
 br
 
-div
+ul
   strong Поезда на маршруте
-  - @trains.each do |train|
-    div = link_to train.number, train_path(train)
+  - @route.trains.each do |train|
+    li = link_to train.number, train_path(train)
 
 br
 
