@@ -1,0 +1,11 @@
+p#notice = notice
+
+p
+  strong Номер: 
+  = @train.number
+
+p
+  strong Маршрут: 
+  = link_to @train.route.title, @train.route
+
+. #{link_to 'Редактировать', edit_train_path(@train)} | #{link_to 'Назад', trains_path}

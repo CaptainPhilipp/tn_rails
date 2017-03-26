@@ -19,6 +19,7 @@ class TrainsController < ApplicationController
 
   # GET /trains/1/edit
   def edit
+    @routes = Route.all
   end
 
   # POST /trains
@@ -61,8 +62,14 @@ class TrainsController < ApplicationController
     end
   end
 
+  def change_route
+    train = Train.find(params[:train_id])
+    train.route = Route.find(params[:route_id])
+    train.save
+    redirect_to edit_train_path(train)
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_train
       @train = Train.find(params[:id])
     end
