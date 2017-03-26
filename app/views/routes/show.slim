@@ -3,5 +3,19 @@ p#notice = notice
 p
   strong Title: 
   = @route.title
+  
+div
+  strong Станции маршрута
+  - @stations.each do |station|
+    div = link_to station.title, railway_station_path(station)
+
+br
+
+div
+  strong Поезда на маршруте
+  - @trains.each do |train|
+    div = link_to train.number, train_path(train)
+
+br
 
 . #{link_to 'Ретактировать', edit_route_path(@route)} | #{link_to 'К маршрутам', routes_path}

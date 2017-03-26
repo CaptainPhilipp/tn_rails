@@ -19,6 +19,7 @@ class TrainsController < ApplicationController
 
   # GET /trains/1/edit
   def edit
+    @route  = @train.route
     @routes = Route.all
   end
 

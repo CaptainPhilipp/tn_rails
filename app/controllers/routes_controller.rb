@@ -6,6 +6,8 @@ class RoutesController < ApplicationController
   end
 
   def show
+    @stations = @route.railway_stations
+    @trains = @route.trains
   end
 
   def new
