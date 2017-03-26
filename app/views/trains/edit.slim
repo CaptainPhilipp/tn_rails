@@ -16,4 +16,5 @@ div
         td = link_to route.title, route_path(route)
         td = link_to 'Выбрать', train_route_path(@train, route), method: :put
 
-p #{link_to 'Показать', @train} | #{link_to 'К поездам', trains_path}
+p #{link_to 'Показать', @train} |
+  #{link_to 'К поездам', trains_path}

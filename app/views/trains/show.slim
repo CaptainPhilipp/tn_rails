@@ -8,4 +8,5 @@ p
   strong Маршрут: 
   = link_to @train.route.title, @train.route
 
-. #{link_to 'Редактировать', edit_train_path(@train)} | #{link_to 'К поездам', trains_path}
+p #{link_to 'Редактировать', edit_train_path(@train)} | 
+  #{link_to 'К поездам', trains_path}
