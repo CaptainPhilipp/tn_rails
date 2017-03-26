@@ -1,13 +1,3 @@
-= form_for(railway_station) do |f|
-  - if railway_station.errors.any?
-    div#error_explanation
-      h2 = "#{pluralize railway_station.errors.count, "error"} prohibited this railway_station from being saved:"
-      ul
-        - railway_station.errors.full_messages.each do |message|
-          li = message
-
-  div.field
-    = f.label :title
-    = f.text_field :title
-  div.actions
-    = f.submit
+= render 'layouts/basic_form', object: railway_station do |f|
+  = f.label :title
+  = f.text_field :title
