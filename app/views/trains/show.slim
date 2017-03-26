@@ -1,0 +1,16 @@
+p#notice = notice
+
+p
+  strong Номер: 
+  = @train.number
+
+p
+  strong Маршрут: 
+  = @train.route ? link_to(@train.route.title, @train.route) : 'Нет маршрута'
+  
+p
+  strong Станция: 
+  = @train.current_station.title
+
+p #{link_to 'Редактировать', edit_train_path(@train)} | 
+  #{link_to 'К поездам', trains_path}

@@ -1,0 +1,15 @@
+h1 Поезда
+
+p#notice = notice
+
+table
+  thead
+    tr
+      th Номер
+      th colspan="3"
+
+  tbody
+    = render @trains
+br
+
+= link_to 'Новый поезд', new_train_path

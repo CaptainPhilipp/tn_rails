@@ -1,0 +1,17 @@
+= form_for(train) do |f|
+  = render 'common/error', resource: train
+  
+  div.field
+    = f.label :number
+    = f.text_field :number
+
+  div.field
+    = f.label :route
+    = f.collection_select :route_id, Route.all, :id, :title
+    
+  div.field
+    = f.label :current_station
+    = f.collection_select :current_station_id, RailwayStation.all, :id, :title
+
+  div.action
+    = f.submit
