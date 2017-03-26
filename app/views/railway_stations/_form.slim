@@ -1,3 +1,5 @@
-= render 'common/basic_form', object: railway_station do |f|
-  = f.label :title
-  = f.text_field :title
+= form_for(railway_station) do |f|
+  = render 'common/error', resource: railway_station
+  div.field
+    = f.label :title
+    = f.text_field :title
