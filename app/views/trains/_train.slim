@@ -1,0 +1,6 @@
+tr
+  td = train.number
+  td = link_to 'Показать', train
+  td = link_to 'Редактировать', edit_train_path(train)
+  td = link_to 'Удалить', train, method: :delete,
+                                           data: { confirm: 'Уверены?' }
