@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325231817) do
+ActiveRecord::Schema.define(version: 20170326092345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20170325231817) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "railway_stations_routes", force: :cascade do |t|
+  create_table "rel_railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
-    t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id", using: :btree
-    t.index ["route_id"], name: "index_railway_stations_routes_on_route_id", using: :btree
+    t.index ["railway_station_id"], name: "index_rel_railway_stations_routes_on_railway_station_id", using: :btree
+    t.index ["route_id"], name: "index_rel_railway_stations_routes_on_route_id", using: :btree
   end
 
   create_table "routes", force: :cascade do |t|
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20170325231817) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "railway_stations_routes", "railway_stations"
-  add_foreign_key "railway_stations_routes", "routes"
+  add_foreign_key "rel_railway_stations_routes", "railway_stations"
+  add_foreign_key "rel_railway_stations_routes", "routes"
   add_foreign_key "tickets", "railway_stations", column: "arrival_id"
   add_foreign_key "tickets", "railway_stations", column: "departure_id"
   add_foreign_key "tickets", "trains"
