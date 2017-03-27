@@ -1,1 +1,20 @@
-h1 Carriages#show
+p#notice = notice
+
+p
+  strong Номер: 
+  = @carriage.number
+
+p
+  strong Тип: 
+  = @carriage.carriage_type
+  
+p
+  strong Поезд: 
+  = link_to @carriage.train.number, @carriage.train
+  
+p
+  strong Места: 
+  = "нижние: #{@carriage.top_seats} / верхние:#{@carriage.bottom_seats}"
+
+p #{link_to 'Редактировать', edit_carriage_path(@carriage)} | 
+  #{link_to 'К вагонам', carriages_path}

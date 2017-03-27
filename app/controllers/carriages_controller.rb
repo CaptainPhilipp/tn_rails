@@ -1,5 +1,9 @@
 class CarriagesController < ApplicationController
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
+  def index
+    @carriages = Carriage.all
+  end
+
   def show
   end
 
@@ -20,7 +24,7 @@ class CarriagesController < ApplicationController
   end
 
   def update
-    if @carriage.update(route_params)
+    if @carriage.update(carriage_params)
       render :show, notice: :success
     else
       render :edit
@@ -35,7 +39,7 @@ class CarriagesController < ApplicationController
 
   private
     def set_carriage
-      @train = Carriage.find(params[:id])
+      @carriage = Carriage.find(params[:id])
     end
 
     def carriage_params
