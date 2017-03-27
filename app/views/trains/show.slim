@@ -16,8 +16,12 @@ p
   strong Вагоны:
 div
   . Всего вагонов: #{@train.carriages.size}
-  . Вагонов купе: #{@train.carriages.coupe.size}
+  . Вагонов купе:     #{@train.carriages.coupe.size}
   . Вагонов плацкарт: #{@train.carriages.economy.size}
+  . Количество мест купе верх:     #{@train.carriages.coupe.seats_count :top}
+  . Количество мест купе низ:      #{@train.carriages.coupe.seats_count :bottom}
+  . Количество мест плацкарт верх: #{@train.carriages.economy.seats_count :top}
+  . Количество мест плацкарт низ:  #{@train.carriages.economy.seats_count :bottom}
 
 p #{link_to 'Редактировать', edit_train_path(@train)} | 
   #{link_to 'К поездам', trains_path}
