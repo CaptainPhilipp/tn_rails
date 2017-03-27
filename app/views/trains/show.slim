@@ -18,10 +18,10 @@ div
   . Всего вагонов: #{@train.carriages.size}
   . Вагонов купе:     #{@train.carriages.coupe.size}
   . Вагонов плацкарт: #{@train.carriages.economy.size}
-  . Количество мест купе верх:     #{@train.carriages.coupe.seats_count :top}
-  . Количество мест купе низ:      #{@train.carriages.coupe.seats_count :bottom}
-  . Количество мест плацкарт верх: #{@train.carriages.economy.seats_count :top}
-  . Количество мест плацкарт низ:  #{@train.carriages.economy.seats_count :bottom}
+  . Количество мест купе верх:     #{@train.carriages.coupe.top_seats}
+  . Количество мест купе низ:      #{@train.carriages.coupe.bottom_seats}
+  . Количество мест плацкарт верх: #{@train.carriages.economy.top_seats}
+  . Количество мест плацкарт низ:  #{@train.carriages.economy.bottom_seats}
   . Всего мест: #{@train.carriages.sum(:top_seats) + @train.carriages.sum(:bottom_seats)}
 
 p #{link_to 'Редактировать', edit_train_path(@train)} | 
