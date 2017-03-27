@@ -11,6 +11,13 @@ p
 p
   strong Станция: 
   = @train.current_station.title
+  
+p
+  strong Вагоны:
+div
+  . Всего вагонов: #{@train.carriages.size}
+  . Вагонов купе: #{@train.carriages.coupe.size}
+  . Вагонов плацкарт: #{@train.carriages.economy.size}
 
 p #{link_to 'Редактировать', edit_train_path(@train)} | 
   #{link_to 'К поездам', trains_path}
