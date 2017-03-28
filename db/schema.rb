@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327210619) do
+ActiveRecord::Schema.define(version: 20170328195848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170327210619) do
   create_table "rel_railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "sort_key",           default: 10
     t.index ["railway_station_id"], name: "index_rel_railway_stations_routes_on_railway_station_id", using: :btree
     t.index ["route_id"], name: "index_rel_railway_stations_routes_on_route_id", using: :btree
   end
