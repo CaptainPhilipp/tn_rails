@@ -22,7 +22,7 @@ div
   . Количество мест купе низ:      #{@train.carriages.coupe.bottom_seats}
   . Количество мест плацкарт верх: #{@train.carriages.economy.top_seats}
   . Количество мест плацкарт низ:  #{@train.carriages.economy.bottom_seats}
-  . Всего мест: #{@train.carriages.sum(:top_seats) + @train.carriages.sum(:bottom_seats)}
+  . Всего мест: #{@train.carriages.top_seats + @train.carriages.bottom_seats}
 
 p #{link_to 'Редактировать', edit_train_path(@train)} | 
   #{link_to 'К поездам', trains_path}
