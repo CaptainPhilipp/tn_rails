@@ -33,8 +33,8 @@ class CarriagesController < ApplicationController
 
   def destroy
     train = @carriage.train
-    @carriage.delete
-    redirect_back fallback_location: @train
+    @carriage.destroy
+    redirect_back fallback_location: train
   end
 
   private
