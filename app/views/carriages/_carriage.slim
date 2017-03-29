@@ -1,9 +1,9 @@
 tr
   td = carriage.number
-  td = carriage.carriage_type
-  td = carriage.top_seats
-  td = carriage.bottom_seats
+  td = carriage.type
+  td = carriage.top_places
+  td = carriage.bottom_places
   td = link_to carriage.train.number, carriage.train
-  td = link_to 'Показать', carriage
+  td = link_to 'Показать', carriage_path(carriage)
   td = link_to 'Редактировать', edit_carriage_path(carriage)
-  td = link_to 'Удалить', carriage, method: :delete, data: { confirm: 'Уверены?' }
+  td = link_to 'Удалить', carriage_path(carriage), method: :delete, data: { confirm: 'Уверены?' }

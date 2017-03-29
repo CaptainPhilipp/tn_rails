@@ -6,7 +6,7 @@ p
 
 p
   strong Тип: 
-  = @carriage.carriage_type
+  = @carriage.type
   
 p
   strong Поезд: 
@@ -14,7 +14,7 @@ p
   
 p
   strong Места: 
-  = "нижние: #{@carriage.top_seats} / верхние:#{@carriage.bottom_seats}"
+  = "нижние: #{@carriage.top_places} / верхние:#{@carriage.bottom_places}"
 
 p #{link_to 'Редактировать', edit_carriage_path(@carriage)} | 
   #{link_to 'К вагонам', carriages_path}

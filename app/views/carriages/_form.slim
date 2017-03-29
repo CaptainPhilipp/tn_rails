@@ -6,12 +6,12 @@
     = f.text_field :number
     
   div.field
-    = f.label :top_seats
-    = f.text_field :top_seats
+    = f.label :top_places
+    = f.text_field :top_places
     
   div.field
-    = f.label :bottom_seats
-    = f.text_field :bottom_seats
+    = f.label :bottom_places
+    = f.text_field :bottom_places
 
   div.field
     = f.label :train
@@ -19,7 +19,7 @@
     
   div.field
     = f.label :carriage_type
-    = f.collection_select :carriage_type, Carriage::TYPES, :to_s, :to_s
+    = f.collection_select :carriage_type, Carriage::TYPES, :type, :title
 
   div.action
     = f.submit

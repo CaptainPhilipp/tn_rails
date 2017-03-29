@@ -1,18 +1,20 @@
 class Carriage < ApplicationRecord
   belongs_to :train
 
-  scope :coupe,   -> { where carriage_type: 'coupe' }
-  scope :economy, -> { where carriage_type: 'economy' }
+  scope :coupe,   -> { where carriage_type: 'CoupeCarriage' }
+  scope :economy, -> { where carriage_type: 'EconomyCarriage' }
 
-  TYPES = %w(economy coupe)
+  CarType = Struct.new(:type, :ru_title)
 
-  class << self
-    def bottom_seats
-      sum(:bottom_seats)
-    end
+  # структы для вызова элементов хелперами форм, как методы
+  TYPES = [CarType.new('economy', 'Плацкарт'),
+           CarType.new('coupe', 'Купе'),
+           CarType.new('first_class', 'СВ'),
+           CarType.new('seat', 'Сидячий')].freeze
 
-    def top_seats
-      sum(:top_seats)
-    end
+  TYPES_LIST = TYPES.map { |car_type| "#{car_type.type.classify}Carriage" }.freeze
+
+  def places_total
+    top_places + bottom_places + side_top_places + side_bottom_places
   end
 end
