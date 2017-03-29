@@ -12,6 +12,6 @@ class Carriage < ApplicationRecord
   PLACE_TYPES = [:top_places, :bottom_places, :side_top_places, :side_bottom_places]
 
   def places_total
-    top_places + bottom_places + side_top_places + side_bottom_places + seat_places
+    PLACE_TYPES.inject(0) { |memo, type_method| memo + send(type_method) }
   end
 end

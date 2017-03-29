@@ -6,12 +6,10 @@ class RailwayStation < ApplicationRecord
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }
 
   # необходимо наличие роута в запросе.
-  #   при его отсутствии - указать в аргументе
-  # но повторное указание роута - нежелательно
-  #   example
-  #     @route.stations.order_by_route_sort_key
-  #   or
-  #     RailwayStation.order_by_route_sort_key(@route)
+  # Пример:
+  #   @route.stations.order_by_route_sort_key
+  # Или:
+  #   RailwayStation.order_by_route_sort_key(@route)
   scope :order_by_route_sort_key, -> (route = nil) do
     if route
       joins(:rel_railway_stations_routes).
