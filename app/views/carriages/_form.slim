@@ -18,8 +18,8 @@
     = f.collection_select :train_id, Train.all, :id, :number
     
   div.field
-    = f.label :carriage_type
-    = f.collection_select :carriage_type, Carriage::TYPES, :type, :title
+    = f.label :type
+    = f.collection_select :type, Carriage::TYPES, :type, :ru_title
 
   div.action
     = f.submit
