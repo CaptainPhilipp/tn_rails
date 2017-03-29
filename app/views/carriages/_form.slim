@@ -1,17 +1,15 @@
-= form_for(carriage) do |f|
+= form_for(:carriage, url: carriage_path(carriage), method: meth) do |f|
   = render 'common/error', resource: carriage
   
   div.field
     = f.label :number
     = f.text_field :number
-    
-  div.field
-    = f.label :top_places
-    = f.text_field :top_places
-    
-  div.field
-    = f.label :bottom_places
-    = f.text_field :bottom_places
+  
+  - Carriage::PLACE_TYPES.each do |place_type|
+    - if carriage.class.method_defined?(place_type)
+      div.field
+        = f.label place_type
+        = f.text_field place_type
 
   div.field
     = f.label :train

@@ -8,13 +8,17 @@ p
   strong Тип: 
   = @carriage.type
   
-p
-  strong Поезд: 
-  = link_to @carriage.train.number, @carriage.train
+- Carriage::PLACE_TYPES.each do |place_type|
+  - if @carriage.class.method_defined?(place_type)
+    p
+      = "#{place_type.to_s.titleize}: "
+      = @carriage.send place_type
   
 p
-  strong Места: 
-  = "нижние: #{@carriage.top_places} / верхние:#{@carriage.bottom_places}"
+  strong Поезд: 
+  = link_to @carriage.train.number, @carriage.train, meth: :post
+  
+
 
 p #{link_to 'Редактировать', edit_carriage_path(@carriage)} | 
   #{link_to 'К вагонам', carriages_path}

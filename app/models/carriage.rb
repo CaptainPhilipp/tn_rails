@@ -12,7 +12,9 @@ class Carriage < ApplicationRecord
            CarType.new('FirstClassCarriage', 'СВ'),
            CarType.new('SeatCarriage',    'Сидячий')].freeze
 
+  PLACE_TYPES = [:top_places, :bottom_places, :side_top_places, :side_bottom_places]
+
   def places_total
-    top_places + bottom_places + side_top_places + side_bottom_places
+    top_places + bottom_places + side_top_places + side_bottom_places + seat_places
   end
 end

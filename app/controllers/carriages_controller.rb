@@ -38,12 +38,8 @@ class CarriagesController < ApplicationController
   end
 
   private
-    # два запроса - плохо... но как иначе обратиться к нужному классу, не захламляя роуты?
-    # поменять класс - нельзя, создать с существующим id - разумеется тоже
-    # остается либо два запроса, либо передача типа сразу в url
     def set_carriage
-      klass = Carriage.find(params[:id]).type.constantize
-      @carriage = klass.find(params[:id])
+      @carriage = Carriage.find(params[:id])
     end
 
     def carriage_params

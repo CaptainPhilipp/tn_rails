@@ -1,7 +1,7 @@
 class SeatCarriage < Carriage
   class << self
-    def seats
-      sum(:bottom_places)
+    def seat_places
+      sum(:seat_places)
     end
   end
 end
