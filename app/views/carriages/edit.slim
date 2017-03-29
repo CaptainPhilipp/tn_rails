@@ -1,6 +1,6 @@
 h1 Редактирование вагона
 
-= render 'form', carriage: @carriage, meth: :put
+= render 'form', carriage: @carriage, form_args: [:carriage, url: carriage_path(@carriage), method: :put]
 
 p #{link_to 'Показать', carriage_path(@carriage)} |
   #{link_to 'К вагонам', carriages_path}

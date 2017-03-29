@@ -8,11 +8,10 @@ p
   strong Тип: 
   = @carriage.type
   
-- Carriage::PLACE_TYPES.each do |place_type|
-  - if @carriage.class.method_defined?(place_type)
-    p
-      = "#{place_type.to_s.titleize}: "
-      = @carriage.send place_type
+- @carriage.place_types.each do |place_type|
+  p
+    = "#{place_type.to_s.titleize}: "
+    = @carriage.send place_type
   
 p
   strong Поезд: 
