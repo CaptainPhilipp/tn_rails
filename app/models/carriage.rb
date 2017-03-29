@@ -1,9 +1,6 @@
 class Carriage < ApplicationRecord
   belongs_to :train
 
-  scope :coupe,   -> { where carriage_type: 'CoupeCarriage' }
-  scope :economy, -> { where carriage_type: 'EconomyCarriage' }
-
   CarType = Struct.new(:type, :ru_title)
 
   # структы для вызова элементов хелперами форм, как методы
