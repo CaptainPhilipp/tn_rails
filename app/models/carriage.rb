@@ -14,14 +14,20 @@ class Carriage < ApplicationRecord
                  :seat_places].freeze
 
   def self.place_types
-    PLACE_TYPES.select { |type_method| self.respond_to? type_method }
+    PLACE_TYPES.select { |place_type| self.respond_to? place_type }
   end
 
   def place_types
     self.class.place_types
   end
 
+  # массив строк характеристик
+  # некрасивый формат в рассчете на локализацию. - все равно символы будут.
+  def place_counts_string
+    place_types.map { |place_type| "#{place_type}: #{send place_type}" }
+  end
+
   def places_total
-    PLACE_TYPES.inject(0) { |memo, type_method| memo + send(type_method) }
+    PLACE_TYPES.inject(0) { |memo, place_type| memo + send(place_type) }
   end
 end

@@ -15,13 +15,10 @@ p
 p
   strong Вагоны:
 div
+  - @train.carriages.each do |car|
+    . = link_to(car.number, carriage_path(car)) + " #{car.type.titleize}; #{car.place_counts_string * ', '}"
+div
   . Всего вагонов: #{@train.carriages.size}
-  . Вагонов купе:     #{@train.coupe_carriages.size}
-  . Вагонов плацкарт: #{@train.economy_carriages.size}
-  . Количество мест купе верх:     #{@train.coupe_carriages.top_places}
-  . Количество мест купе низ:      #{@train.coupe_carriages.bottom_places}
-  . Количество мест плацкарт верх: #{@train.economy_carriages.top_places}
-  . Количество мест плацкарт низ:  #{@train.economy_carriages.bottom_places}
   . Всего мест: #{@train.places_total}
 
 p #{link_to 'Редактировать', edit_train_path(@train)} | 
