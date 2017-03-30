@@ -1,6 +1,7 @@
 class Carriage < ApplicationRecord
   belongs_to :train
 
+  validates :serial, uniqueness: { scope: :train_id }
   before_validation :set_serial
 
   CarType = Struct.new(:type, :ru_title)
@@ -29,7 +30,6 @@ class Carriage < ApplicationRecord
   #
 
   # массив строк характеристик
-  # некрасивый формат в рассчете на локализацию. - все равно символы будут.
   def place_counts_string
     self.class.place_fields.map { |place_field| "#{place_field}: #{send place_field}" }
   end
