@@ -2,6 +2,7 @@ class Carriage < ApplicationRecord
   belongs_to :train
 
   validates :serial, uniqueness: { scope: :train_id }
+  validates :type, presence: true # исключая родительский класс
   before_validation :set_serial
 
   CarType = Struct.new(:type, :ru_title)
@@ -15,19 +16,9 @@ class Carriage < ApplicationRecord
                  :side_top_places, :side_bottom_places,
                  :seat_places].freeze
 
-  def set_serial
-    max = Carriage.select(:serial).where(train_id: train_id).maximum(:serial)
-    self.serial ||= max + 1
-  end
-
   def self.place_fields
     PLACE_FIELDS.select { |place_field| self.respond_to? place_field }
   end
-  #
-  # вообще, более очевидно вышло бы с динамическим объявлением классовых методов
-  # и явным указанием полей для конкретного наследника.
-  # но оставлю это на рефакторинг.
-  #
 
   # массив строк характеристик
   def place_counts_string
@@ -36,5 +27,12 @@ class Carriage < ApplicationRecord
 
   def places_total
     PLACE_FIELDS.inject(0) { |memo, place_field| memo + send(place_field) }
+  end
+
+  private
+
+  def set_serial
+    max = Carriage.select(:serial).where(train_id: train_id).maximum(:serial)
+    self.serial ||= max + 1
   end
 end

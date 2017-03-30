@@ -6,7 +6,7 @@ p
   
 ul
   strong Станции маршрута
-  - @route.railway_stations.order_by_route_sort_key.each do |station|
+  - @route.ordered_stations.each do |station|
     li = link_to station.title, station
 
 br
