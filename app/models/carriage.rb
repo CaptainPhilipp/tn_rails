@@ -3,31 +3,36 @@ class Carriage < ApplicationRecord
 
   CarType = Struct.new(:type, :ru_title)
 
-  # структы для вызова элементов хелперами форм, как методы
+  # для вызова элементов хелперами форм
   TYPES = [CarType.new('EconomyCarriage', 'Плацкарт'),
-           CarType.new('CoupeCarriage',   'Купе'),
+           CarType.new('CoupeCarriage', 'Купе'),
            CarType.new('FirstClassCarriage', 'СВ'),
-           CarType.new('SeatCarriage',    'Сидячий')].freeze
+           CarType.new('SeatCarriage', 'Сидячий')].freeze
 
-  PLACE_TYPES = [:top_places, :bottom_places,
+  # list of places fields
+  PLACE_FIELDS = [:top_places, :bottom_places,
                  :side_top_places, :side_bottom_places,
                  :seat_places].freeze
 
-  def self.place_types
-    PLACE_TYPES.select { |place_type| self.respond_to? place_type }
+  # list of place fields class methods
+  # (that must return sum's of fields in collection
+  # for current Carriage type)
+  def self.place_fields
+    PLACE_FIELDS.select { |place_field| self.class.respond_to? place_field }
   end
-
-  def place_types
-    self.class.place_types
-  end
+  #   
+  # вообще, более очевидно вышло бы с динамическим объявлением классовых методов
+  # и явным указанием полей для конкретного наследника.
+  # но оставлю это на рефакторинг.
+  #   
 
   # массив строк характеристик
   # некрасивый формат в рассчете на локализацию. - все равно символы будут.
   def place_counts_string
-    place_types.map { |place_type| "#{place_type}: #{send place_type}" }
+    self.class.place_fields.map { |place_type| "#{place_type}: #{send place_type}" }
   end
 
   def places_total
-    PLACE_TYPES.inject(0) { |memo, place_type| memo + send(place_type) }
+    PLACE_FIELDS.inject(0) { |memo, place_field| memo + send(place_field) }
   end
 end

@@ -5,10 +5,10 @@
     = f.label :number
     = f.text_field :number
   
-  - carriage.place_types.each do |place_type|
+  - carriage.class.place_fields.each do |place_field|
     div.field
-      = f.label place_type
-      = f.text_field place_type
+      = f.label place_field
+      = f.text_field place_field
 
   div.field
     = f.label :train
