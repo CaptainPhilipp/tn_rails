@@ -23,11 +23,6 @@ class Carriage < ApplicationRecord
   def self.place_fields
     PLACE_FIELDS.select { |place_field| self.respond_to? place_field }
   end
-  #
-  # вообще, более очевидно вышло бы с динамическим объявлением классовых методов
-  # и явным указанием полей для конкретного наследника.
-  # но оставлю это на рефакторинг.
-  #
 
   # массив строк характеристик
   def place_counts_string
