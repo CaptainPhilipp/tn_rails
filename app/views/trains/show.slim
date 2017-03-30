@@ -16,7 +16,10 @@ p
   strong Вагоны:
 div
   - @train.carriages.each do |car|
-    . = link_to(car.number, carriage_path(car)) + " #{car.type.titleize}; #{car.place_counts_string * ', '}"
+    div
+      = "[#{car.serial}] "
+      = link_to(car.number, carriage_path(car)) + \
+        " #{car.type.titleize}; #{car.place_counts_string * ', '}"
 div
   . Всего вагонов: #{@train.carriages.size}
   . Всего мест: #{@train.places_total}

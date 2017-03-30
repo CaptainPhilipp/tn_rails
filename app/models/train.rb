@@ -9,6 +9,10 @@ class Train < ApplicationRecord
   has_many :fist_class_carriages
   has_many :seat_carriages
 
+  alias old_carriages carriages
+
+  scope :carriages, -> { old_carriages.order(serial: reverse_cars_sort ? :desc : :asc) }
+
   def places_total
     carriages.inject(0) { |memo, car| memo + car.places_total }
   end

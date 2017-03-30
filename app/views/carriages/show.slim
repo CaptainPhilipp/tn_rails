@@ -10,8 +10,8 @@ p
   
 - @carriage.class.place_fields.each do |place_field|
   p
-    = "#{place_type.to_s.titleize}: "
-    = @carriage.send place_type
+    = "#{place_field.to_s.titleize}: "
+    = @carriage.send place_field
   
 p
   strong Поезд: 
