@@ -15,8 +15,8 @@ class Carriage < ApplicationRecord
                  :seat_places].freeze
 
   def set_serial
-    serials = Carriage.select(:serial).where(train_id: train_id)
-    self.serial ||= serials.maximum(:serial) + 1
+    max = Carriage.select(:serial).where(train_id: train_id).maximum(:serial)
+    self.serial ||= max + 1
   end
 
   def self.place_fields

@@ -7,6 +7,7 @@ class Route < ApplicationRecord
 
   alias stations railway_stations
 
+  # для сортировки
   def set_sort_key(railway_station, sort_key)
     rel_railway_stations_routes
       .find_by(railway_station_id: railway_station.id)

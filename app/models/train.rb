@@ -16,4 +16,8 @@ class Train < ApplicationRecord
   def places_total
     carriages.inject(0) { |memo, car| memo + car.places_total }
   end
+
+  def get_carriages(car_type, place_type)
+    carriages.where(type: car_type).sum(place_type)
+  end
 end
