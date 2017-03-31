@@ -5,10 +5,12 @@ class Carriage < ApplicationRecord
   validates :type, presence: true # исключая родительский класс
   before_validation :set_serial
 
-  TYPES = {type: 'EconomyCarriage',    ru_title: 'Плацкарт'),
-           type: 'CoupeCarriage',      ru_title: 'Купе'),
-           type: 'FirstClassCarriage', ru_title: 'СВ'),
-           type: 'SeatCarriage',       ru_title: 'Сидячий')}.freeze
+  CarType = Struct.new(:type, :ru_title)
+
+  TYPES = [CarType.new('EconomyCarriage', 'Плацкарт'),
+           CarType.new('CoupeCarriage', 'Купе'),
+           CarType.new('FirstClassCarriage', 'СВ'),
+           CarType.new('SeatCarriage', 'Сидячий')].freeze
 
   PLACE_FIELDS = [:top_places, :bottom_places,
                  :side_top_places, :side_bottom_places,
