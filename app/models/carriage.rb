@@ -32,11 +32,4 @@ class Carriage < ApplicationRecord
   def set_serial
     self.serial ||= train.carriages.maximum(:serial) + 1
   end
-
-  private
-
-  def set_serial
-    max = Carriage.select(:serial).where(train_id: train_id).maximum(:serial)
-    self.serial ||= max + 1
-  end
 end
