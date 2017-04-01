@@ -1,7 +1,4 @@
 class FirstClassCarriage < Carriage
-  class << self
-    def bottom_places
-      sum(:bottom_places)
-    end
-  end
+  extend CollectionFields
+  collection_sum_fields :bottom_places
 end

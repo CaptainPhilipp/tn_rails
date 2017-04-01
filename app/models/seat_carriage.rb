@@ -1,7 +1,4 @@
 class SeatCarriage < Carriage
-  class << self
-    def seat_places
-      sum(:seat_places)
-    end
-  end
+  extend CollectionFields
+  collection_sum_fields :seat_places
 end
