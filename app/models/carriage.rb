@@ -13,11 +13,6 @@ class Carriage < ApplicationRecord
                  :side_top_places, :side_bottom_places,
                  :seat_places].freeze
 
-  def set_serial
-    max = Carriage.select(:serial).where(train_id: train_id).maximum(:serial)
-    self.serial ||= max + 1
-  end
-
   def self.place_fields
     PLACE_FIELDS.select { |place_field| self.respond_to? place_field }
   end
@@ -28,6 +23,12 @@ class Carriage < ApplicationRecord
   end
 
   def places_total
-    PLACE_FIELDS.inject(0) { |memo, place_field| memo + send(place_field) }
+    self.class.sum("#{PLACE_FIELDS * ' + '}")
+  end
+
+  private
+
+  def set_serial
+    self.serial ||= train.carriages.maximum(:serial) + 1
   end
 end

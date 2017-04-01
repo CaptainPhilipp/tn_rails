@@ -7,6 +7,8 @@ class RelRailwayStationsRoute < ApplicationRecord
 
   before_save :set_sort_key
 
+  private
+
   def set_sort_key
     sort_key ||= self.class.where(route_id: route_id).max(:sort_key) + 1
   end
