@@ -6,15 +6,17 @@ p
 
 p
   strong Тип: 
-  = @carriage.carriage_type
+  = @carriage.type
+  
+- @carriage.class.place_fields.each do |place_field|
+  p
+    = "#{place_field.to_s.titleize}: "
+    = @carriage.send place_field
   
 p
   strong Поезд: 
   = link_to @carriage.train.number, @carriage.train
-  
-p
-  strong Места: 
-  = "нижние: #{@carriage.top_seats} / верхние:#{@carriage.bottom_seats}"
+
 
 p #{link_to 'Редактировать', edit_carriage_path(@carriage)} | 
   #{link_to 'К вагонам', carriages_path}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327210619) do
+ActiveRecord::Schema.define(version: 20170331230610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,15 @@ ActiveRecord::Schema.define(version: 20170327210619) do
   create_table "carriages", force: :cascade do |t|
     t.integer  "number"
     t.integer  "train_id"
-    t.integer  "bottom_seats"
-    t.integer  "top_seats"
-    t.string   "carriage_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "bottom_places",      default: 0
+    t.integer  "top_places",         default: 0
+    t.string   "type"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "side_top_places",    default: 0
+    t.integer  "side_bottom_places", default: 0
+    t.integer  "seat_places",        default: 0
+    t.integer  "serial"
     t.index ["train_id"], name: "index_carriages_on_train_id", using: :btree
   end
 
@@ -35,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170327210619) do
   create_table "rel_railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "sort_key",           default: 10
     t.index ["railway_station_id"], name: "index_rel_railway_stations_routes_on_railway_station_id", using: :btree
     t.index ["route_id"], name: "index_rel_railway_stations_routes_on_route_id", using: :btree
   end
@@ -58,10 +63,11 @@ ActiveRecord::Schema.define(version: 20170327210619) do
 
   create_table "trains", force: :cascade do |t|
     t.string   "number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "route_id"
     t.integer  "current_station_id"
+    t.boolean  "reverse_cars_sort",  default: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id", using: :btree
   end
 

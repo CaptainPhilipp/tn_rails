@@ -6,15 +6,15 @@ p
   
 ul
   strong Станции маршрута
-  - @route.railway_stations.each do |station|
-    li = link_to station.title, railway_station_path(station)
+  - @route.ordered_stations.each do |station|
+    li = link_to station.title, station
 
 br
 
 ul
   strong Поезда на маршруте
   - @route.trains.each do |train|
-    li = link_to train.number, train_path(train)
+    li = link_to train.number, train
 
 br
 

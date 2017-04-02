@@ -2,5 +2,5 @@ h1 Редактирование вагона
 
 = render 'form', carriage: @carriage
 
-p #{link_to 'Показать', @carriage} |
+p #{link_to 'Показать', carriage_path(@carriage)} |
   #{link_to 'К вагонам', carriages_path}
