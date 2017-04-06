@@ -51,13 +51,18 @@ class RailwayStationsController < ApplicationController
   end
 
   def change_position
-    @railway_station.change_sort_key_in(params[:route_id], params[:sort_key])
+    rel = @railway_station.rel_railway_stations_route(params[:route_id])
+    rel.update(rel_railway_stations_route_params)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_railway_station
       @railway_station = RailwayStation.find(params[:id])
+    end
+
+    def rel_railway_stations_route_params
+      params.permit(:sort_key)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

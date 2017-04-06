@@ -23,10 +23,6 @@ class RailwayStation < ApplicationRecord
     rel_railway_stations_route(route).sort_key
   end
 
-  def change_sort_key_in(route, sort_key)
-    rel_railway_stations_route(route).update(sort_key: sort_key)
-  end
-
   def rel_railway_stations_route(route)
     rel_railway_stations_routes.find_by(route_id: route_id(route))
   end
