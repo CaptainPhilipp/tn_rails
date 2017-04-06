@@ -13,7 +13,7 @@
 
   div.field
     = f.label :train
-    = f.collection_select :train_id, Train.all, :id, :number
+    = f.collection_select :train_id, Train.all, :id, :number, include_blank: true
     
   div.field
     = f.label :type
