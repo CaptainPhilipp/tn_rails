@@ -62,7 +62,7 @@ class RailwayStationsController < ApplicationController
     end
 
     def rel_railway_stations_route_params
-      params.permit(:sort_key)
+      params.permit(:sort_key, :departure_time, :arrival_time)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
