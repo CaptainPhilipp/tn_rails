@@ -10,7 +10,7 @@ p
   
 p
   strong Станция: 
-  = @train.current_station.title
+  = link_to @train.current_station.title, @train.current_station
   
 p
   strong Вагоны:

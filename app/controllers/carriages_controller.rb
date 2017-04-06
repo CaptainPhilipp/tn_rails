@@ -4,8 +4,7 @@ class CarriagesController < ApplicationController
     @carriages = Carriage.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @carriage = Carriage.new
@@ -20,8 +19,7 @@ class CarriagesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @carriage.update(carriage_params)
@@ -38,13 +36,14 @@ class CarriagesController < ApplicationController
   end
 
   private
-    def set_carriage
-      @carriage = Carriage.find(params[:id])
-    end
 
-    def carriage_params
-      params.require(:carriage).permit(:number, :serial, :type, :train_id,
-        :bottom_places, :top_places, :side_bottom_places, :side_top_places,
-        :seat_places)
-    end
+  def set_carriage
+    @carriage = Carriage.find(params[:id])
+  end
+
+  def carriage_params
+    params.require(:carriage).permit(:number, :serial, :type, :train_id,
+                                     :bottom_places, :top_places, :side_bottom_places, :side_top_places,
+                                     :seat_places)
+  end
 end

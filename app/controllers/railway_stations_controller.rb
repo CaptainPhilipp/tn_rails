@@ -50,6 +50,10 @@ class RailwayStationsController < ApplicationController
     redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
   end
 
+  def change_position
+    @railway_station.change_sort_key_in(params[:route_id], params[:sort_key])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_railway_station
