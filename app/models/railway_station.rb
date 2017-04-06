@@ -5,6 +5,12 @@ class RailwayStation < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }
 
+  scope :ordered_by_route, -> do
+    select('railway_stations.*, rel_railway_stations_routes.sort_key')
+      .joins(:rel_railway_stations_routes)
+      .order('rel_railway_stations_routes.sort_key').uniq
+  end
+
   def sort_key_in(route)
     rel_railway_stations_route(route).sort_key
   end

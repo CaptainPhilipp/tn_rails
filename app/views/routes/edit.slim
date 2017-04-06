@@ -2,7 +2,8 @@ h1 Редактирование маршрута
 
 = render 'form', route: @route
 
-- @route.ordered_stations.each do |station|
+/ - @route.ordered_stations.each do |station|
+- @route.stations.ordered_by_route.each do |station|
   = form_tag change_position_railway_station_path(station)
     .
       = label_tag station.title
