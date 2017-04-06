@@ -23,8 +23,7 @@ class RoutesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @route.update(route_params)
@@ -46,6 +45,10 @@ class RoutesController < ApplicationController
   end
 
   def route_params
-    params.require(:route).permit(:title, railway_station_ids: [])
+    params.require(:route).permit(
+      :title,
+      railway_station_ids: [],
+      rel_railway_stations_routes: [:id, :departure_time, :arrival_time]
+    )
   end
 end

@@ -5,12 +5,13 @@ class RelRailwayStationsRoute < ApplicationRecord
   validates :railway_station, uniqueness: { scope: :route_id }
   validates :sort_key,        uniqueness: { scope: :route_id }
 
-  before_save :set_sort_key
+  before_validation :set_sort_key
 
   private
 
   def set_sort_key
-    maximum = self.class.where(route_id: route_id).maximum(:sort_key)
-    self.sort_key = (maximum || sort_key) + 1
+    all = self.class.where(route_id: route_id).to_a
+    all.delete self
+    self.sort_key = all ? all.max(&:sort_key).sort_key + 1 : 0 unless sort_key
   end
 end

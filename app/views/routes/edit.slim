@@ -2,14 +2,5 @@ h1 Редактирование маршрута
 
 = render 'form', route: @route
 
-/ - @route.ordered_stations.each do |station|
-- @route.stations.ordered_by_route.each do |station|
-  = form_tag change_position_railway_station_path(station)
-    .
-      = label_tag station.title
-      = number_field_tag :sort_key, station.sort_key_in(@route)
-      = hidden_field_tag :route_id, @route.id
-      = submit_tag 'Изменить'
-
 p #{link_to 'Показать', route_path(@route)} | 
   #{link_to 'К маршрутам', routes_path}
