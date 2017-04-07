@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406202042) do
+ActiveRecord::Schema.define(version: 20170407205103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,14 @@ ActiveRecord::Schema.define(version: 20170406202042) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "train_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "departure_id"
     t.integer  "arrival_id"
+    t.string   "passeneger_name"
+    t.integer  "passeneger_document"
+    t.index ["arrival_id"], name: "index_tickets_on_arrival_id", using: :btree
+    t.index ["departure_id"], name: "index_tickets_on_departure_id", using: :btree
     t.index ["train_id"], name: "index_tickets_on_train_id", using: :btree
     t.index ["user_id"], name: "index_tickets_on_user_id", using: :btree
   end
