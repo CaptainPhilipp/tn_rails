@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :find_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def index
     @routes = Route.all
@@ -38,9 +38,17 @@ class RoutesController < ApplicationController
     redirect_to routes_path, notice: :success
   end
 
+  def search
+    @stations = RailwayStation.all
+  end
+
+  def find
+    Route.relevant(params[:departure_id], params[:arrival_id])
+  end
+
   private
 
-  def find_route
+  def set_route
     @route = Route.find(params[:id])
   end
 
