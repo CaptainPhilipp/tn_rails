@@ -26,8 +26,4 @@ class Train < ApplicationRecord
   def get_carriages(car_type, place_type)
     carriages.where(type: car_type).sum(place_type)
   end
-
-  def self.relevant(*args)
-    Route.relevant(*args).map(&:trains).flatten
-  end
 end

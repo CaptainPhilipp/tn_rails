@@ -24,24 +24,4 @@ class Route < ApplicationRecord
     return true if railway_stations.count >= 2
     errors.add(:base, 'Should contain more than one station')
   end
-
-  def self.relevant(departure_id, arrival_id)
-    joins('JOIN rel_railway_stations_routes AS a ON a.route_id = routes.id ')
-      .joins('JOIN rel_railway_stations_routes AS b ' \
-             'ON b.route_id = routes.id ')
-      .where('a.railway_station_id = ? AND ' \
-             'b.railway_station_id = ? AND ' \
-             'a.sort_key < b.sort_key', departure_id, arrival_id)
-  end
-
-  # то работает то нет. не нашел причину почему вдруг сломалось, хотя бенчмарки проходили весьма успешно
-  # def self.relevant2(departure_id, arrival_id)
-  #   select('`routes`.*, a.railway_station_id, b.railway_station_id')
-  #     .joins('JOIN rel_railway_stations_routes AS a ON a.route_id = routes.id ')
-  #     .joins('JOIN rel_railway_stations_routes AS b ON b.route_id = routes.id ' \
-  #            'a.railway_station_id = ? AND ' \
-  #            'b.railway_station_id = ? AND ' \
-  #            'b.route_id = routes.id ', departure_id, arrival_id)
-  #     .where('a.sort_key < b.sort_key')
-  # end
 end

@@ -1,12 +1,17 @@
 = form_for(ticket) do |f|
+  = render 'common/error', resource: ticket
+  
   div.field
-    = f.collection_select :train_id, @trains, :id, :number, selected: @train_id
+    f.label :train
+      div = @train.number
 
   div.field
-    = f.collection_select :departure_id, @stations, :id, :title, selected: @train_id
-
+    = f.label :departure
+      div = @departure.title
+      
   div.field
-    = f.collection_select :arrival_id, @stations, :id, :title, selected: @train_id
+    = f.label :arrival
+      div = @arrival.title
 
   div.field
     = f.label :passeneger_name
@@ -16,6 +21,9 @@
     = f.label :passeneger_document
     = f.text_field :passeneger_document
     
-  div = f.hidden_field :user_id
+  / = f.hidden_field :user_id
+  = hidden_field_tag :departure_id, @departure.id, name: 'ticket[departure_id]'
+  = hidden_field_tag :arrival_id, @arrival.id, name: 'ticket[arrival_id]'
+  = hidden_field_tag :train_id, @train.id, name: 'ticket[train_id]'
   
   div = f.submit

@@ -3,14 +3,15 @@ Rails.application.routes.draw do
     post :change_position, on: :member
   end
 
-  resources :trains, :carriages, :routes do
-    get :new_ticket, to: 'tickets#new', on: :member
+  resources :trains do
+    match :search, via: %i(get post), on: :collection
   end
 
-  resources :tickets, only: %i(new create show index)
+  resources :tickets, only: %i(create show index) do
+    get 'new/:train_id/:departure_id/:arrival_id', to: 'tickets#new', on: :collection, as: :new
+  end
 
-  resources :routes
-  match :search, to: 'trains#search', via: %i(get post)
+  resources :routes, :carriages, :routes
 
   root 'routes#index'
 end

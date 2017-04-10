@@ -1,16 +1,36 @@
 class TicketsController < ApplicationController
-  # def index; end
+  # def index; end # for current_user
 
   def new
     @ticket = Ticket.new
-    @trains = Train.all
-    @stations = RailwayStation.all
-    @train_id = params[:id]
+    set_ticket_context(params)
   end
 
   def create
+    @ticket = Ticket.new(ticket_params)
+    set_ticket_context(ticket_params)
+    if @ticket.save
+      redirect_to @ticket
+    else
+      render :new
+    end
   end
 
-  def show
+  def show; end
+
+  private
+
+  def set_ticket_context(params_)
+    @train     = Train.find params_[:train_id]
+    @departure = RailwayStation.find params_[:departure_id]
+    @arrival   = RailwayStation.find params_[:arrival_id]
+  end
+
+  def ticket_params
+    params.require(:ticket).permit(ticket_param_names)
+  end
+
+  def ticket_param_names
+    %i(departure_id arrival_id user_id passenger_name passenger_document train_id)
   end
 end

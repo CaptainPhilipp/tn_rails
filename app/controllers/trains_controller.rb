@@ -54,12 +54,7 @@ class TrainsController < ApplicationController
 
   def search
     @stations = RailwayStation.all
-    @trains =
-      if stations_params[:departure_id] && stations_params[:arrival_id]
-        Train.relevant(stations_params[:departure_id], stations_params[:arrival_id])
-      else
-        []
-      end
+    @trains   = SearchTrain.new(stations_params).by_stations
   end
 
   private
