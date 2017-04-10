@@ -1,0 +1,17 @@
+= form_tag do
+  div.field
+    = collection_select :railway_station, :departure_id, @stations, :id, :title
+
+  div.field
+    = collection_select :railway_station, :arrival_id, @stations, :id, :title
+
+  div = submit_tag 'Найти подходящие маршруты'
+
+  table
+    thead
+      tr
+        th Номер
+        th colspan="3"
+
+    tbody
+      = render @trains

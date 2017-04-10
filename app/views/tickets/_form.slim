@@ -3,10 +3,10 @@
     = f.collection_select :train_id, @trains, :id, :number, selected: @train_id
 
   div.field
-    = f.collection_select :departure_id, @stations, :id, :number, selected: @train_id
+    = f.collection_select :departure_id, @stations, :id, :title, selected: @train_id
 
   div.field
-    = f.collection_select :arrival_id, @stations, :id, :number, selected: @train_id
+    = f.collection_select :arrival_id, @stations, :id, :title, selected: @train_id
 
   div.field
     = f.label :passeneger_name

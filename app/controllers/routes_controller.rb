@@ -38,14 +38,6 @@ class RoutesController < ApplicationController
     redirect_to routes_path, notice: :success
   end
 
-  def search
-    @stations = RailwayStation.all
-  end
-
-  def find
-    Route.relevant(params[:departure_id], params[:arrival_id])
-  end
-
   private
 
   def set_route

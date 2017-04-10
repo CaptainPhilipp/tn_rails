@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
     @trains = Train.all
+    @stations = RailwayStation.all
     @train_id = params[:id]
   end
 

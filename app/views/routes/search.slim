@@ -1,8 +1,0 @@
-= form_tag do
-  div.field
-    = collection_select :railway_station, :departure_id, @stations, :id, :title, include_blank: true
-
-  div.field
-    = collection_select :railway_station, :arrival_id, @stations, :id, :title, include_blank: true
-  
-  div = submit_tag 'Найти подходящие маршруты'

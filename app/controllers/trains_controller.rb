@@ -1,4 +1,5 @@
 class TrainsController < ApplicationController
+  include TrainsHelper
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
   # GET /trains
@@ -49,6 +50,16 @@ class TrainsController < ApplicationController
   def destroy
     @train.destroy
     redirect_to trains_url, notice: 'Train was successfully destroyed.'
+  end
+
+  def search
+    @stations = RailwayStation.all
+    @trains =
+      if stations_params[:departure_id] && stations_params[:arrival_id]
+        Train.relevant(stations_params[:departure_id], stations_params[:arrival_id])
+      else
+        []
+      end
   end
 
   private

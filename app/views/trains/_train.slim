@@ -3,4 +3,8 @@ tr
   td = link_to 'Показать', train
   td = link_to 'Редактировать', edit_train_path(train)
   td = link_to 'Удалить', train, method: :delete, data: { confirm: 'Уверены?' }
-  td = link_to 'Купить билет на поезд', new_ticket_train_path(train)
+  = form_for train, url: new_ticket_path, method: :post do |f|
+    = hidden_field :departure_id, stations_params[:departure_id]
+    = hidden_field :arrival_id, stations_params[:arrival_id]
+    = hidden_field :train_id, train.id
+    td = f.submit 'Купить билет на поезд'
