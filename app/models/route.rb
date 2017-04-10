@@ -22,6 +22,6 @@ class Route < ApplicationRecord
 
   def stations_count
     return true if railway_stations.count >= 2
-    errors.add(:base, 'Should contain more than one station')
+    errors.add(:base, 'Should contain two and more stations')
   end
 end

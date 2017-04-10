@@ -55,6 +55,9 @@ class TrainsController < ApplicationController
   def search
     @stations = RailwayStation.all
     @trains   = SearchTrain.new(stations_params).by_stations
+
+    @departure_id = stations_params[:departure_id]
+    @arrival_id   = stations_params[:arrival_id]
   end
 
   private
