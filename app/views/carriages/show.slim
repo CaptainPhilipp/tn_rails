@@ -15,7 +15,10 @@ p
   
 p
   strong Поезд: 
-  = link_to @carriage.train.number, @carriage.train
+  - if @carriage.train
+    = link_to @carriage.train.number, @carriage.train
+  - else
+    a none
 
 
 p #{link_to 'Редактировать', edit_carriage_path(@carriage)} | 

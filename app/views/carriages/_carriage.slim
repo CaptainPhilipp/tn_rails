@@ -3,6 +3,9 @@ tr
   td = carriage.type
   td = carriage.top_places
   td = carriage.bottom_places
+  td = carriage.side_top_places
+  td = carriage.side_bottom_places
+  td = carriage.seat_places
   td = carriage.train && link_to(carriage.train.number, carriage.train) || 'none'
   td = link_to 'Показать', carriage_path(carriage)
   td = link_to 'Редактировать', edit_carriage_path(carriage)
