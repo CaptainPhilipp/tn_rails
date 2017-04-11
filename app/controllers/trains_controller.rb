@@ -52,14 +52,6 @@ class TrainsController < ApplicationController
     redirect_to trains_url, notice: 'Train was successfully destroyed.'
   end
 
-  def search
-    @stations = RailwayStation.all
-    @trains   = SearchTrain.new(stations_params).by_stations
-
-    @departure_id = stations_params[:departure_id]
-    @arrival_id   = stations_params[:arrival_id]
-  end
-
   private
     def set_train
       @train_mfker = Shit.find(params[:id])
@@ -69,10 +61,5 @@ class TrainsController < ApplicationController
       params.require(:train).permit(
         :number, :current_station_id, :route_id, carriage_ids: []
       )
-    end
-
-    def stations_params
-      return {} unless params[:railway_station]
-      params.require(:railway_station).permit %i(departure_id arrival_id)
     end
 end

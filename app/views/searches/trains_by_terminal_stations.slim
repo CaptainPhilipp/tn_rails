@@ -1,4 +1,4 @@
-= form_tag do
+= form_tag searches_trains_path do
   div.field
     = collection_select :railway_station, :departure_id, @stations, :id, :title, selected: @departure_id
 
