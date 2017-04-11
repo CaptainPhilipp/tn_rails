@@ -1,13 +1,15 @@
 class CarriagesController < ApplicationController
   before_action :set_carriage, only: %i[show edit update destroy]
   def index
-    @carriages = Carriage.all
+    @train_id  = train_id
+    @carriages = train_id ? Carriage.where(train_id: train_id) : Carriage.all
   end
 
   def show; end
 
   def new
     @carriage = Carriage.new
+    @train = train
   end
 
   def create
@@ -36,6 +38,15 @@ class CarriagesController < ApplicationController
   end
 
   private
+
+  def train_id
+    params[:train_id]
+  end
+
+  def train
+    return unless train_id
+    @train = Train.find(train_id)
+  end
 
   def set_carriage
     @carriage = Carriage.find(params[:id])

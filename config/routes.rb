@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :routes, :carriages, :routes, :trains
+  resources :routes, :carriages
+
+  resources :trains do
+    resources :carriages
+  end
 
   resources :railway_stations do
     post :change_position, on: :member
