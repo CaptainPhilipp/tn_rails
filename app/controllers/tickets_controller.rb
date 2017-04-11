@@ -16,7 +16,12 @@ class TicketsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @ticket = Ticket.find(params[:id])
+    @train  = @ticket.train.select(:number)
+    @departure = @ticket.departure.select(:title)
+    @arrival   = @ticket.arrival.select(:title)
+  end
 
   private
 

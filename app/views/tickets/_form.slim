@@ -2,24 +2,24 @@
   = render 'common/error', resource: ticket
   
   div.field
-    f.label :train
-      div = @train.number
+    = f.label :train
+    div = @train.number
 
   div.field
     = f.label :departure
-      div = @departure.title
+    div = @departure.title
       
   div.field
     = f.label :arrival
-      div = @arrival.title
+    div = @arrival.title
 
   div.field
     = f.label :passeneger_name
-    = f.text_field :passeneger_name
+    div = f.text_field :passeneger_name
     
   div.field
     = f.label :passeneger_document
-    = f.text_field :passeneger_document
+    div = f.text_field :passeneger_document
     
   / = f.hidden_field :user_id
   = hidden_field_tag :departure_id, @departure.id, name: 'ticket[departure_id]'
