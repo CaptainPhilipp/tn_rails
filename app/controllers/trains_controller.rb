@@ -54,7 +54,7 @@ class TrainsController < ApplicationController
 
   private
     def set_train
-      @train_mfker = Shit.find(params[:id])
+      @train = Train.find(params[:id])
     end
 
     def train_params
