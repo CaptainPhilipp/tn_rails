@@ -8,10 +8,10 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    set_ticket_context(ticket_params)
     if @ticket.save
       redirect_to @ticket
     else
+      set_ticket_context(ticket_params)
       render :new
     end
   end

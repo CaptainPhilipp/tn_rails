@@ -1,6 +1,6 @@
 class TrainsController < ApplicationController
   include TrainsHelper
-  before_action :set_train, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: %i(show edit update destroy)
 
   # GET /trains
   # GET /trains.json
@@ -62,12 +62,17 @@ class TrainsController < ApplicationController
 
   private
     def set_train
-      @train = Train.find(params[:id])
+      @train_mfker = Shit.find(params[:id])
     end
 
     def train_params
       params.require(:train).permit(
         :number, :current_station_id, :route_id, carriage_ids: []
       )
+    end
+
+    def stations_params
+      return {} unless params[:railway_station]
+      params.require(:railway_station).permit %i(departure_id arrival_id)
     end
 end
