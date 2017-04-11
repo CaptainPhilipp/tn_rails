@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     match :trains, via: %i(get post), action: :trains_by_terminal_stations
   end
 
-  root 'routes#index'
+  root 'static_pages#index'
 end
