@@ -6,6 +6,7 @@ class Route < ApplicationRecord
   accepts_nested_attributes_for :rel_railway_stations_routes
 
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }
+  validate :stations_count
 
   alias stations railway_stations
 
@@ -13,10 +14,14 @@ class Route < ApplicationRecord
     railway_stations.order('rel_railway_stations_routes.sort_key')
   end
 
-  # для сортировки
-  def set_sort_key(railway_station, sort_key)
+  def change_sort_key(railway_station, sort_key)
     rel_railway_stations_routes
       .find_by(railway_station_id: railway_station.id)
       .update(sort_key: sort_key)
+  end
+
+  def stations_count
+    return true if railway_stations.count >= 2
+    errors.add(:base, 'Should contain two and more stations')
   end
 end

@@ -1,5 +1,6 @@
 class TrainsController < ApplicationController
-  before_action :set_train, only: [:show, :edit, :update, :destroy]
+  include TrainsHelper
+  before_action :set_train, only: %i(show edit update destroy)
 
   # GET /trains
   # GET /trains.json
@@ -57,6 +58,8 @@ class TrainsController < ApplicationController
     end
 
     def train_params
-      params.require(:train).permit(:number, :current_station_id, :route_id)
+      params.require(:train).permit(
+        :number, :current_station_id, :route_id, carriage_ids: []
+      )
     end
 end

@@ -1,5 +1,5 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_railway_station, only: %i(show edit update destroy change_position)
 
   # GET /railway_stations
   # GET /railway_stations.json
@@ -50,10 +50,19 @@ class RailwayStationsController < ApplicationController
     redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
   end
 
+  def change_position
+    rel = @railway_station.rel_railway_stations_route(params[:route_id])
+    rel.update(rel_railway_stations_route_params)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_railway_station
       @railway_station = RailwayStation.find(params[:id])
+    end
+
+    def rel_railway_stations_route_params
+      params.permit %i(sort_key departure_time arrival_time)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

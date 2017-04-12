@@ -4,10 +4,17 @@ p
   strong Title: 
   = @route.title
   
-ul
+table
+  tr
+    th Название
+    th Прибытие
+    th Отправление
   strong Станции маршрута
   - @route.ordered_stations.each do |station|
-    li = link_to station.title, station
+    tr
+      td = link_to station.title, station
+      td = station.arrival_time_in(@route)
+      td = station.departure_time_in(@route)
 
 br
 

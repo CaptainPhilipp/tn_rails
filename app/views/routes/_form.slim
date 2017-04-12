@@ -5,9 +5,7 @@
     = f.label :title
     = f.text_field :title
     
-  div.field
-    = f.label :stations
-    = f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, multiple: true
-
+  = render 'route_stations', route: route
+          
   div.action
-    = f.submit
+    = f.submit 'Удалить не отмеченные'

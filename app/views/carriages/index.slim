@@ -9,6 +9,9 @@ table
       th Тип
       th Верхние места
       th Нижние места
+      th Боковые нижние места
+      th Боковые верхние места
+      th Сидячие места
       th Поезд
       th colspan="3"
 
@@ -16,4 +19,4 @@ table
     = render partial: 'carriages/carriage', collection: @carriages
 br
 
-= link_to 'Новый вагон', new_carriage_path
+= link_to 'Новый вагон', @train_id ? new_train_carriage_path : new_carriage_path

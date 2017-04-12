@@ -10,7 +10,7 @@ p
   
 p
   strong Станция: 
-  = @train.current_station.title
+  = link_to @train.current_station.title, @train.current_station
   
 p
   strong Вагоны:
@@ -23,6 +23,8 @@ div
 div
   . Всего вагонов: #{@train.carriages.size}
   . Всего мест: #{@train.places_total}
+  br
+  = link_to 'Вагоны поезда', train_carriages_path(@train)
 
 p #{link_to 'Редактировать', edit_train_path(@train)} | 
   #{link_to 'К поездам', trains_path}
