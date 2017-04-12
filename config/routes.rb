@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     get 'new/:train_id/:departure_id/:arrival_id', to: 'tickets#new', on: :collection, as: :new
   end
 
-  resources :search, only: :new do
-    post :find, on: :new
+  namespace :searches do
+    match :trains, via: %i(get post), action: :trains_by_terminal_stations
   end
 
   root 'static_pages#home'
