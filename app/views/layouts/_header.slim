@@ -1,1 +1,10 @@
-p = link_to 'Home', root_path
+p#notice = notice
+p#alert  = alert
+
+- if user_signed_in?
+  a = link_to :sign_out, destroy_user_session_path
+- else
+  a = link_to :sign_in, new_user_session_path
+  / a = link_to :sign_up, user_sign_up_path
+
+p = link_to :home, root_path

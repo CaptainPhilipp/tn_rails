@@ -54,6 +54,7 @@ group :development do
 
   gem 'rubocop'
   gem 'better_errors'
+  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
