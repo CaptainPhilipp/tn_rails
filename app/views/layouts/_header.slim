@@ -8,3 +8,6 @@ p#alert  = alert
   / a = link_to :sign_up, user_sign_up_path
 
 p = link_to :home, root_path
+
+- if user_signed_in?
+  p = "Здравствуйте, #{current_user.name}"
