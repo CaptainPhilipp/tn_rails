@@ -1,0 +1,5 @@
+- if user_signed_in? && current_user.admin?
+  p = link_to :routes,   admin_routes_path
+  p = link_to :stations, admin_railway_stations_path
+  p = link_to :trains,   admin_trains_path
+  p = link_to :carriages, admin_carriages_path

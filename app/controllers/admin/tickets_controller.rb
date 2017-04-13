@@ -1,4 +1,4 @@
-class Admin::TicketsController < Admin::Base
+class Admin::TicketsController < Admin::BaseController
   before_action :set_admin_ticket, only: %i[show edit update destroy]
   before_action :any_ticket_context
   before_action :concrete_ticket_context, only: %i[show edit new]

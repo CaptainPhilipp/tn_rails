@@ -1,4 +1,4 @@
-class Admin::RailwayStationsController < Admin::Base
+class Admin::RailwayStationsController < Admin::BaseController
   before_action :set_railway_station, only: %i(show edit update destroy change_position)
 
   # GET /railway_stations

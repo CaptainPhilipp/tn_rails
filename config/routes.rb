@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :railway_stations do
       post :change_position, on: :member
     end
+
+    get '', controller: :base, action: :index
   end
 
   resources :tickets, only: %i(index create show destroy) do
