@@ -7,6 +7,6 @@ tr
   td = carriage.side_bottom_places
   td = carriage.seat_places
   td = carriage.train && link_to(carriage.train.number, carriage.train) || 'none'
-  td = link_to 'Показать', carriage_path(carriage)
+  td = link_to 'Показать', admin_carriage_path(carriage)
   td = link_to 'Редактировать', edit_carriage_path(carriage)
-  td = link_to 'Удалить', carriage_path(carriage), method: :delete, data: { confirm: 'Уверены?' }
+  td = link_to 'Удалить', admin_carriage_path(carriage), method: :delete, data: { confirm: 'Уверены?' }

@@ -1,4 +1,4 @@
-class CarriagesController < ApplicationController
+class Admin::CarriagesController < Admin::Base
   before_action :set_carriage, only: %i[show edit update destroy]
   def index
     @train_id  = train_id

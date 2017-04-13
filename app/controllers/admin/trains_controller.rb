@@ -1,4 +1,4 @@
-class TrainsController < ApplicationController
+class Admin::TrainsController < Admin::Base
   include TrainsHelper
   before_action :set_train, only: %i(show edit update destroy)
 

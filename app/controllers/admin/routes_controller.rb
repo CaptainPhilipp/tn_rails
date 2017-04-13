@@ -1,4 +1,4 @@
-class RoutesController < ApplicationController
+class Admin::RoutesController < Admin::Base
   before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -35,7 +35,7 @@ class RoutesController < ApplicationController
 
   def destroy
     @route.delete
-    redirect_to routes_path, notice: :success
+    redirect_to admin_routes_path, notice: :success
   end
 
   private

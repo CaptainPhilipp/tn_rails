@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :routes, :carriages
+  namespace :admin do
+    resources :routes, :carriages
 
-  resources :trains do
-    resources :carriages
-  end
+    resources :trains do
+      resources :carriages
+    end
 
-  resources :railway_stations do
-    post :change_position, on: :member
+    resources :railway_stations do
+      post :change_position, on: :member
+    end
   end
 
   resources :tickets, only: %i(create show index) do
