@@ -1,31 +1,35 @@
 class TicketsController < ApplicationController
-  # def index; end # for current_user
+  before_action :authenticate_user!
+  def index
+    @tickets = current_user.tickets
+  end
 
   def new
     @ticket = Ticket.new
-    set_ticket_context(params)
+    ticket_context(params)
   end
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.user = current_user
     if @ticket.save
       redirect_to @ticket
     else
-      set_ticket_context(ticket_params)
+      ticket_context(ticket_params)
       render :new
     end
   end
 
   def show
     @ticket = Ticket.find(params[:id])
-    @train  = @ticket.train.select(:number)
-    @departure = @ticket.departure.select(:title)
-    @arrival   = @ticket.arrival.select(:title)
+    @train  = @ticket.train
+    @departure = @ticket.departure
+    @arrival   = @ticket.arrival
   end
 
   private
 
-  def set_ticket_context(params_)
+  def ticket_context(params_)
     @train     = Train.find params_[:train_id]
     @departure = RailwayStation.find params_[:departure_id]
     @arrival   = RailwayStation.find params_[:arrival_id]
@@ -36,6 +40,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_param_names
-    %i(departure_id arrival_id user_id passenger_name passenger_document train_id)
+    %i(departure_id arrival_id passenger_name passenger_document train_id)
   end
 end

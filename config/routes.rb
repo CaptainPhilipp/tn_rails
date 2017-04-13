@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :search, only: :new do
-    post :find, on: :new
+    post :new, action: :find, on: :new
   end
 
   root 'static_pages#home'
