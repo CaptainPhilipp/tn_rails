@@ -1,7 +1,7 @@
 tr
   td = train.number
-  td = link_to 'Показать', train
-  td = link_to 'Редактировать', edit_train_path(train)
-  td = link_to 'Удалить', train, method: :delete, data: { confirm: 'Уверены?' }
+  td = link_to 'Показать', [:admin ,train]
+  td = link_to 'Редактировать', edit_admin_train_path(train)
+  td = link_to 'Удалить', [:admin ,train], method: :delete, data: { confirm: 'Уверены?' }
   - if @departure_id && @arrival_id
     td = link_to 'Купить билет', new_tickets_path(train, @departure_id, @arrival_id)

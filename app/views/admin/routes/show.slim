@@ -10,7 +10,7 @@ table
   strong Станции маршрута
   - @route.ordered_stations.each do |station|
     tr
-      td = link_to station.title, station
+      td = link_to station.title, [:admin ,station]
       td = station.arrival_time_in(@route)
       td = station.departure_time_in(@route)
 
@@ -19,9 +19,9 @@ br
 ul
   strong Поезда на маршруте
   - @route.trains.each do |train|
-    li = link_to train.number, train
+    li = link_to train.number, [:admin ,train]
 
 br
 
-p #{link_to 'Ретактировать', edit_route_path(@route)} | 
+p #{link_to 'Ретактировать', edit_admin_route_path(@route)} | 
   #{link_to 'К маршрутам', admin_routes_path}

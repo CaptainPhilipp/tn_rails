@@ -4,11 +4,11 @@ p
 
 p
   strong Маршрут: 
-  = @train.route ? link_to(@train.route.title, @train.route) : 'Нет маршрута'
+  = @train.route ? link_to(@train.route.title, [:admin ,@train.route]) : 'Нет маршрута'
   
 p
   strong Станция: 
-  = link_to @train.current_station.title, @train.current_station
+  = link_to @train.current_station.title, [:admin ,@train.current_station]
   
 p
   strong Вагоны:
@@ -24,5 +24,5 @@ div
   br
   = link_to 'Вагоны поезда', admin_carriages_path(@train)
 
-p #{link_to 'Редактировать', edit_train_path(@train)} | 
+p #{link_to 'Редактировать', edit_admin_train_path(@train)} | 
   #{link_to 'К поездам', admin_trains_path}

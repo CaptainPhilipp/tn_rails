@@ -10,7 +10,7 @@ div.field
       - route.ordered_stations.each do |station|
         tr
           td = check_box_tag :route_railway_station_id, station.id, true, name: 'route[railway_station_ids][]'
-          td = link_to station.title, station
+          td = link_to station.title, [:admin ,station]
           = form_tag change_position_railway_station_path(station)
             td = number_field_tag :sort_key, station.sort_key_in(@route)
             td = time_field_tag :arrival_time, station.arrival_time_in(@route)

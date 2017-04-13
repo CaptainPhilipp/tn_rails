@@ -14,10 +14,10 @@ p
 p
   strong Поезд: 
   - if @carriage.train
-    = link_to @carriage.train.number, @carriage.train
+    = link_to @carriage.train.number, [:admin ,@carriage.train]
   - else
     a none
 
 
-p #{link_to 'Редактировать', edit_carriage_path(@carriage)} | 
+p #{link_to 'Редактировать', edit_admin_carriage_path(@carriage)} | 
   #{link_to 'К вагонам', admin_carriages_path}

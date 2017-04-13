@@ -17,4 +17,4 @@ table
     = render partial: 'carriages/carriage', collection: @carriages
 br
 
-= link_to 'Новый вагон', @train_id ? new_train_carriage_path : new_carriage_path
+= link_to 'Новый вагон', @train_id ? new_admin_train_carriage_path : new_admin_carriage_path
