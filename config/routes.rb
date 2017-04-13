@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :tickets
+  end
   devise_for :users
 
   namespace :admin do

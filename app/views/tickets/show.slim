@@ -21,4 +21,5 @@ div
   p = @ticket.passeneger_document
 
 p #{link_to 'Удалить', @ticket, method: :delete, data: { confirm: 'Уверены?' }} | 
-  #{link_to 'К билетам', tickets_path}
+  #{link_to 'Edit', edit_admin_ticket_path} |
+  #{link_to 'К билетам', admin_tickets_path}
