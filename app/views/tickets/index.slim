@@ -1,0 +1,11 @@
+h1 :tickets
+
+table
+  tr
+    th Имя
+    th = 'departure_station'
+    th = 'arrival_station'
+    th = 'train_number'
+  = render @tickets
+
+= link_to 'Найти новый билет', new_search_path

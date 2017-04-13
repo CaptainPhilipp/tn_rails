@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_ticket, only: %i(show destroy)
+
   def index
     @tickets = current_user.tickets
   end
@@ -21,13 +23,27 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
-    @train  = @ticket.train
+    @train     = @ticket.train
     @departure = @ticket.departure
     @arrival   = @ticket.arrival
   end
 
+  def destroy
+    @ticket.destroy
+    redirect_to tickets_url, notice: 'Ticket was successfully destroyed.'
+  end
+
   private
+
+  def set_ticket
+    @ticket = Ticket.find(params[:id])
+    check_ticket_owner
+  end
+
+  def check_ticket_owner
+    return true if current_user.id == @ticket.user_id
+    redirect_to tickets_url, notice: 'Can\'t access this ticket'
+  end
 
   def ticket_context(params_)
     @train     = Train.find params_[:train_id]

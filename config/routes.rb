@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tickets, only: %i(create show index) do
+  resources :tickets, only: %i(index create show destroy) do
     get 'new/:train_id/:departure_id/:arrival_id', to: 'tickets#new', on: :collection, as: :new
   end
 
-  resources :search, only: :new do
+  resources :search, only: %i(new index) do
     post :new, action: :find, on: :new
   end
 

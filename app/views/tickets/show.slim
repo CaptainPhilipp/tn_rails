@@ -19,3 +19,6 @@ div
 div
   a = :passeneger_document
   p = @ticket.passeneger_document
+
+p #{link_to 'Удалить', @ticket, method: :delete, data: { confirm: 'Уверены?' }} | 
+  #{link_to 'К билетам', tickets_path}
