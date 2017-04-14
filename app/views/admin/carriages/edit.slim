@@ -1,0 +1,6 @@
+h1 Редактирование вагона
+
+= render 'form', carriage: @carriage
+
+p #{link_to 'Показать', admin_carriage_path(@carriage)} |
+  #{link_to 'К вагонам', admin_carriages_path}

@@ -1,21 +1,25 @@
 h1 Билет
 
 div
-  = label :train
-  = @train.number
+  a = :train_number
+  p = @train.number
 
 div
-  = label :departure
-  = @departure.title
+  a = :departure
+  p = @departure.title
 
 div
-  = label :arrival
-  = @arrival.title
+  a = :arrival
+  p = @arrival.title
 
 div
-  = label :passeneger_name
-  = @ticket.passeneger_name
+  a = :passeneger_name
+  p = @ticket.passeneger_name
 
 div
-  = label :passeneger_document
-  = @ticket.passeneger_document
+  a = :passeneger_document
+  p = @ticket.passeneger_document
+
+p #{link_to 'Удалить', @ticket, method: :delete, data: { confirm: 'Уверены?' }} | 
+  #{link_to 'Edit', edit_admin_ticket_path} |
+  #{link_to 'К билетам', admin_tickets_path}

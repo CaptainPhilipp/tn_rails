@@ -1,0 +1,17 @@
+= form_tag new_search_path do
+  div.field
+    = collection_select :railway_station, :departure_id, @stations, :id, :title, selected: @departure_id
+
+  div.field
+    = collection_select :railway_station, :arrival_id, @stations, :id, :title, selected: @arrival_id
+
+  div = submit_tag 'Найти подходящие поезда'
+
+  table
+    thead
+      tr
+        th Номер
+        th colspan="2" Маршрут
+
+    tbody
+      = render partial: 'search/train', collection: @trains

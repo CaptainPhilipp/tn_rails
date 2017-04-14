@@ -1,0 +1,13 @@
+h1 Поезда
+
+table
+  thead
+    tr
+      th Номер
+      th colspan="3"
+
+  tbody
+    = render @trains
+br
+
+= link_to 'Новый поезд', new_admin_train_path

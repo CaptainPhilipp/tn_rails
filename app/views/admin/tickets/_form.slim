@@ -1,0 +1,28 @@
+= form_for([:admin, ticket]) do |f|
+  = render 'common/error', resource: ticket
+
+  div.field
+    = f.label :user
+    = collection_select :ticket, :user_id, @users, :id, :name, selected: ticket.user_id
+
+  div.field
+    = f.label :train
+    = collection_select :ticket, :train_id, @trains, :id, :number, selected: ticket.train_id
+
+  div.field
+    = f.label :departure
+    = collection_select :ticket, :departure_id, @stations, :id, :title, selected: ticket.departure_id
+
+  div.field
+    = f.label :arrival
+    = collection_select :ticket, :arrival_id, @stations, :id, :title, selected: ticket.arrival_id
+
+  div.field
+    = f.label :passeneger_name
+    div = f.text_field :passeneger_name
+
+  div.field
+    = f.label :passeneger_document
+    div = f.text_field :passeneger_document
+
+  div = f.submit

@@ -21,7 +21,6 @@
     = f.label :passeneger_document
     div = f.text_field :passeneger_document
     
-  / = f.hidden_field :user_id
   = hidden_field_tag :departure_id, @departure.id, name: 'ticket[departure_id]'
   = hidden_field_tag :arrival_id, @arrival.id, name: 'ticket[arrival_id]'
   = hidden_field_tag :train_id, @train.id, name: 'ticket[train_id]'
