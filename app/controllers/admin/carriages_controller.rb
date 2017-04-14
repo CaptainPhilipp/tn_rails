@@ -15,7 +15,7 @@ class Admin::CarriagesController < Admin::BaseController
   def create
     @carriage = Carriage.new(carriage_params)
     if @carriage.save
-      redirect_to edit_carriage_path(@carriage), notice: :success
+      redirect_to edit_admin_carriage_path(@carriage), notice: :success
     else
       render :new
     end
@@ -34,7 +34,7 @@ class Admin::CarriagesController < Admin::BaseController
   def destroy
     train = @carriage.train
     @carriage.destroy
-    redirect_back fallback_location: train
+    redirect_back fallback_location: [:admin, train]
   end
 
   private

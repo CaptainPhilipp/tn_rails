@@ -1,7 +1,9 @@
 ru:
+  show: 'Показать'
   create: 'Создать'
   update: 'Изменить'
   destroy: 'Удалить'
+  home: 'Домой'
   admin:
     railway_stations:
       update:
@@ -10,3 +12,24 @@ ru:
         success: 'Станция была успешно создана.'
       destroy:
         success: 'Станция была успешно удалена.'
+    trains:
+      update:
+        success: 'Поезд была успешно изменен.'
+      create:
+        success: 'Поезд была успешно создан.'
+      destroy:
+        success: 'Поезд была успешно удален.'
+      edit:
+        train_editing: 'Редактирование поезда'
+        to_trains: 'К поездам'
+      form:
+        create_or_free_carriage: 'Создайте новый свободный вагон, или открепите существующий от поезда'
+        # submit: '%{action} поезд'
+  # tickets:
+  #   form:
+      # submit: '%{action} билет'
+  # layouts:
+  #   admin_header:
+  #     home: 'Домой'
+  #   header:
+  #     home: 'Домой'

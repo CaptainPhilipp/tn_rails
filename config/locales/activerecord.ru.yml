@@ -8,18 +8,33 @@ ru:
       train: 'Поезд'
       user: 'Пользователь'
     attributes:
-      number: 'Номер'
-      title: 'Название'
-      name: 'Имя'
+
       route:
         departure: 'Отправление'
         arrival: 'Прибытие'
+        title: 'Название'
+      train:
+        route: 'Маршрут'
+        current_station: 'Текущая станция'
+        carriages: 'Вагоны'
+        number: 'Номер'
+        title: 'Название'
+      carriage:
+        number: 'Номер'
+        train: 'Поезд'
+        type: 'Тип'
+      ticket:
+        train: 'Поезд'
+        departure: 'Отправление'
+        arrival: 'Прибытие'
+        passeneger_name: 'Имя пассажира'
+        passeneger_document: 'Документ пассажира'
     errors:
       messages:
-        uniqueness: 'должен быть уникален'
         blank: 'не может быть пустым'
         too_short: 'имеет слишком мало символов'
         too_long: 'имеет слишком много символов'
+        taken: 'уже занят'
       # models:
       #   carriage:
       #     attributes:

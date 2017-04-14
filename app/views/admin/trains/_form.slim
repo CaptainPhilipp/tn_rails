@@ -14,12 +14,12 @@
     = f.collection_select :current_station_id, RailwayStation.all, :id, :title
     
   dev.field
-    = f.label :carriage_ids
+    = f.label :carriages
     - if train.available_carriages.any?
       = f.collection_select :carriage_ids, train.available_carriages, :id, :number, {}, multiple: true
     - else
-      . Создайте новый свободный вагон, или открепите существующий от поезда
+      . = t '.create_or_free_carriage'
       br
 
   div.action
-    = f.submit
+    = f.submit i18n_submit(train)

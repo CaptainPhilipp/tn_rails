@@ -1,4 +1,4 @@
-= form_for(carriage.becomes(Carriage)) do |f|
+= form_for([:admin, carriage.becomes(Carriage)]) do |f|
   = render 'common/error', resource: carriage
   
   div.field
@@ -24,4 +24,4 @@
     = f.collection_select :type, Carriage::TYPES, :type, :ru
 
   div.action
-    = f.submit
+    = f.submit i18n_submit(carriage.becomes(Carriage))
