@@ -1,5 +1,5 @@
 class Admin::TicketsController < Admin::BaseController
-  before_action :set_admin_ticket, only: %i[show edit update destroy]
+  before_action :set_ticket, only: %i[show edit update destroy]
   before_action :any_ticket_context
   before_action :concrete_ticket_context, only: %i[show edit new]
 
@@ -22,7 +22,7 @@ class Admin::TicketsController < Admin::BaseController
   # POST /admin/tickets
   # POST /admin/tickets.json
   def create
-    @ticket = Ticket.new(admin_ticket_params)
+    @ticket = Ticket.new(ticket_params)
 
     respond_to do |format|
       if @ticket.save
@@ -39,7 +39,7 @@ class Admin::TicketsController < Admin::BaseController
   # PATCH/PUT /admin/tickets/1.json
   def update
     respond_to do |format|
-      if @ticket.update(admin_ticket_params)
+      if @ticket.update(ticket_params)
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
@@ -76,12 +76,12 @@ class Admin::TicketsController < Admin::BaseController
   end
 
     # Use callbacks to share common setup or constraints between actions.
-  def set_admin_ticket
+  def set_ticket
     @ticket = Ticket.find(params[:id])
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_ticket_params
+  def ticket_params
     params.require(:ticket).permit(ticket_param_names)
   end
 
