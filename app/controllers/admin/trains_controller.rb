@@ -29,7 +29,7 @@ class Admin::TrainsController < Admin::BaseController
   def create
     @train = Train.new(train_params)
     if @train.save
-      redirect_to @train, notice: 'Train was successfully created.'
+      redirect_to [:admin, @train], notice: 'Train was successfully created.'
     else
       render :new
     end
@@ -39,7 +39,7 @@ class Admin::TrainsController < Admin::BaseController
   # PATCH/PUT /trains/1.json
   def update
     if @train.update(train_params)
-      redirect_to @train, notice: 'Train was successfully updated.'
+      redirect_to [:admin, @train], notice: 'Train was successfully updated.'
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class Admin::TrainsController < Admin::BaseController
   # DELETE /trains/1.json
   def destroy
     @train.destroy
-    redirect_to trains_url, notice: 'Train was successfully destroyed.'
+    redirect_to admin_trains_url, notice: 'Train was successfully destroyed.'
   end
 
   private
