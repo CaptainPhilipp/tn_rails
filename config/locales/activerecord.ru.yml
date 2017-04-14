@@ -1,0 +1,27 @@
+ru:
+  activerecord:
+    models:
+      carriage: 'Вагон'
+      railway_station: 'Станция'
+      route: 'Маршрут'
+      ticket: 'Билет'
+      train: 'Поезд'
+      user: 'Пользователь'
+    attributes:
+      number: 'Номер'
+      title: 'Название'
+      name: 'Имя'
+      route:
+        departure: 'Отправление'
+        arrival: 'Прибытие'
+    errors:
+      messages:
+        uniqueness: 'должен быть уникален'
+        blank: 'не может быть пустым'
+        too_short: 'имеет слишком мало символов'
+        too_long: 'имеет слишком много символов'
+      # models:
+      #   carriage:
+      #     attributes:
+      #       type:
+      #         blank: 'не может быть пустым'

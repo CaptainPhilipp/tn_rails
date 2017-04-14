@@ -1,0 +1,12 @@
+ru:
+  create: 'Создать'
+  update: 'Изменить'
+  destroy: 'Удалить'
+  admin:
+    railway_stations:
+      update:
+        success: 'Станция была успешно изменена.'
+      create:
+        success: 'Станция была успешно создана.'
+      destroy:
+        success: 'Станция была успешно удалена.'
