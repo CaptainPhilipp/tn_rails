@@ -1,14 +1,14 @@
 module CollectionFields
-  @types = []
+  # @types = []
 
   def self.included(klass)
-    @types << klass.to_s
+    # @types << klass.to_s
     klass.extend ClassMethods
   end
 
-  def self.types
-    @types
-  end
+  # def self.types
+  #   @types
+  # end
 
   module ClassMethods
     def collection_sum_fields(*fields)
