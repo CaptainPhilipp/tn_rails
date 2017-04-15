@@ -56,8 +56,8 @@ ru:
         too_short: 'имеет слишком мало символов'
         too_long: 'имеет слишком много символов'
         taken: 'уже занят'
-      # models:
-      #   carriage:
-      #     attributes:
-      #       type:
-      #         blank: 'не может быть пустым'
+      models:
+        carriage:
+          attributes:
+            type:
+              existance: 'Тип "%{type}" не существует'

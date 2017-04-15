@@ -1,6 +1,6 @@
 tr
   td = carriage.number
-  td = t(carriage.type, scope: 'activerecord.models')
+  td = t(carriage.model_name.human)
   td = carriage.top_places
   td = carriage.bottom_places
   td = carriage.side_top_places

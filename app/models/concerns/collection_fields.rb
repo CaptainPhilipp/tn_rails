@@ -15,7 +15,7 @@ module CollectionFields
       fields.each { |field| define_singleton_method(field) { sum(field) } }
 
       define_singleton_method(:place_fields) { fields }
-      define_singleton_method(:places_total) { sum("#{fields * '+'}") }
+      define_singleton_method(:places_total) { sum(fields * '+') }
 
       define_method(:place_fields) { fields }
       define_method(:places_total) { fields.inject(0) { |m, f| m + send(f) } }

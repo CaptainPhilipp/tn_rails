@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      CoupeCarriage: 'Coupe'
+      EconomyCarriage: 'Economy'
+      FirstClassCarriage: 'FirstClass'
+      SeatCarriage: 'Seat'
+    errors:
+      models:
+        carriage:
+          attributes:
+            type:
+              existance: 'Type "%{type}" is not exists'

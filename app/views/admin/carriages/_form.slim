@@ -1,17 +1,17 @@
 = form_for([:admin, carriage.becomes(Carriage)]) do |f|
   = render 'common/error', resource: carriage
   
-  div.field
+  div.form-group
     = f.label :number, class: "col-md-2 control-label"
     = f.text_field :number
   
   - if carriage.type
     - carriage.class.place_fields.each do |place_field|
-      div.field
+      div.form-group
         = f.label place_field, class: "col-md-2 control-label"
         = f.text_field place_field
 
-  div.field
+  div.form-group
     = f.label :train, class: "col-md-2 control-label"
     - if @train
       . = @train.number
@@ -19,9 +19,9 @@
     - else
       = f.collection_select :train_id, Train.all, :id, :number, include_blank: true
     
-  div.field
+  div.form-group
     = f.label :type, class: "col-md-2 control-label"
     = f.select :type, options_for_select(carriage_options_for_select)
 
-  div.action
+  div.form-group
     = f.submit i18n_submit(carriage.becomes(Carriage)), class: 'btn btn-default'

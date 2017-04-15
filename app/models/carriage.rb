@@ -18,6 +18,6 @@ class Carriage < ApplicationRecord
 
   def set_serial
     return unless train
-    self.serial ||= train.carriages.maximum(:serial) + 1
+    self.serial ||= (train.carriages.maximum(:serial) || 0) + 1
   end
 end
