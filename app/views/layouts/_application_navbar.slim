@@ -2,7 +2,15 @@ div.navbar-collapse.collapse.navbar-responsive-collapse
   ul.nav.navbar-nav
     - scope = 'activerecord.models'
     li = link_to t(:search), new_search_path
-    li = link_to t(:route,           scope: scope, count: :_other), admin_routes_path
-    li = link_to t(:railway_station, scope: scope, count: :_other), admin_railway_stations_path
-    li = link_to t(:train,           scope: scope, count: :_other), admin_trains_path
-    li = link_to t(:carriage,        scope: scope, count: :_other), admin_carriages_path
+    - if user_signed_in? && current_user.admin?
+      li = link_to t(:route,           scope: scope, count: :_other), admin_routes_path
+      li = link_to t(:railway_station, scope: scope, count: :_other), admin_railway_stations_path
+      li = link_to t(:train,           scope: scope, count: :_other), admin_trains_path
+      li = link_to t(:carriage,        scope: scope, count: :_other), admin_carriages_path
+    - if user_signed_in?
+      li = drop_down current_user.name do
+        = menu_item t(:sign_out, scope: 'devise.main'), destroy_user_session_path, method: :delete
+    - else
+      li = drop_down t(:account) do
+        = menu_item t(:sign_in, scope: 'devise.main'), new_user_session_path
+        = menu_item t(:sign_up, scope: 'devise.main'), new_user_registration_path
