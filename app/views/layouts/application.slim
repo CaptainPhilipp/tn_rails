@@ -1,0 +1,20 @@
+doctype html
+html[lang="en"]
+  = render 'layouts/application_head'
+  body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"]
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        = link_to 'Tutu', root_path, class: 'navbar-brand'
+        = render 'layouts/application_navbar'
+    .container
+      .row
+        .col-lg-12
+          = bootstrap_flash
+          = yield
+          = console
+      footer
+        = render 'layouts/footer'
