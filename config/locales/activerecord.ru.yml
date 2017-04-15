@@ -19,6 +19,10 @@ ru:
       user:
         one:   'Пользователь'
         other: 'Пользователи'
+      CoupeCarriage: 'Купе'
+      EconomyCarriage: 'Плацкарт'
+      FirstClassCarriage: 'СВ'
+      SeatCarriage: 'Сидячий'
     attributes:
       route:
         departure: 'Отправление'
@@ -40,10 +44,6 @@ ru:
         side_top_places: 'Верхние боковые места'
         side_bottom_places: 'Нижние боковые места'
         seat_places: 'Сидячие места'
-        CoupeCarriage: 'Купе'
-        EconomyCarriage: 'Плацкарт'
-        FirstClassCarriage: 'СВ'
-        SeatCarriage: 'Сидячий'
       ticket:
         train: 'Поезд'
         departure: 'Отправление'

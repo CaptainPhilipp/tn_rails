@@ -21,7 +21,7 @@
     
   div.field
     = f.label :type, class: "col-md-2 control-label"
-    = f.collection_select :type, Carriage::TYPES, :type, :ru
+    = f.select :type, options_for_select(carriage_options_for_select)
 
   div.action
     = f.submit i18n_submit(carriage.becomes(Carriage)), class: 'btn btn-default'
