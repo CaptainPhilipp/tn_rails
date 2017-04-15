@@ -27,7 +27,7 @@ class Admin::RailwayStationsController < Admin::BaseController
     @railway_station = RailwayStation.new(railway_station_params)
 
     if @railway_station.save
-      redirect_to @railway_station, notice: t('.success')
+      redirect_to [:admin, @railway_station], notice: t('.success')
     else
       render :new
     end
@@ -47,7 +47,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   # DELETE /railway_stations/1.json
   def destroy
     @railway_station.destroy
-    redirect_to railway_stations_url, notice: t('.success')
+    redirect_to admin_railway_stations_url, notice: t('.success')
   end
 
   def change_position
