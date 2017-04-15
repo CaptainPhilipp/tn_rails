@@ -4,14 +4,14 @@ table.table.table-hover
   thead
     tr
       - scope = 'activerecord.attributes.carriage'
-      th = t('number', scope: scope)
-      th = t('type', scope: scope)
-      th = t('top_places', scope: scope)
-      th = t('bottom_places', scope: scope)
-      th = t('side_top_places', scope: scope)
-      th = t('side_bottom_places', scope: scope)
-      th = t('seat_places', scope: scope)
-      th = t('train', scope: scope)
+      th = Carriage.human_attribute_name :number
+      th = Carriage.human_attribute_name :type
+      th = Carriage.human_attribute_name :top_places
+      th = Carriage.human_attribute_name :bottom_places
+      th = Carriage.human_attribute_name :side_top_places
+      th = Carriage.human_attribute_name :side_bottom_places
+      th = Carriage.human_attribute_name :seat_places
+      th = Carriage.human_attribute_name :train
       th colspan="3"
   tbody.table-hover
     = render partial: 'carriage', collection: @carriages

@@ -24,6 +24,7 @@ ru:
         departure: 'Отправление'
         arrival: 'Прибытие'
         title: 'Название'
+        position: 'Порядок'
       train:
         route: 'Маршрут'
         current_station: 'Текущая станция'
