@@ -1,25 +1,33 @@
-= form_for([:admin, train]) do |f|
+= form_for([:admin, train], class: 'form-horizontal') do |f|
   = render 'common/error', resource: train
   
-  div.field
-    = f.label :number
-    = f.text_field :number
+  div.form-group.col-md-12
+    = f.label :number, class: 'col-md-2 control-label'
+    .col-md-4
+      = f.text_field :number, class: 'form-control'
 
-  div.field
-    = f.label :route
-    = f.collection_select :route_id, Route.all, :id, :title
+  div.form-group.col-md-12
+    = f.label :route, class: 'col-md-2 control-label'
+    .col-md-4
+      = f.collection_select :route_id, Route.all, :id, :title, {},
+        class: 'form-control'
+  
     
-  div.field
-    = f.label :current_station
-    = f.collection_select :current_station_id, RailwayStation.all, :id, :title
+  div.form-group.col-md-12
+    = f.label :current_station, class: 'col-md-2 control-label'
+    .col-md-4
+      = f.collection_select :current_station_id, RailwayStation.all, :id, :title, {},
+        class: 'form-control'
     
-  dev.field
-    = f.label :carriages
-    - if train.available_carriages.any?
-      = f.collection_select :carriage_ids, train.available_carriages, :id, :number, {}, multiple: true
-    - else
-      . = t '.create_or_free_carriage'
-      br
-
-  div.action
-    = f.submit i18n_submit(train)
+  div.form-group.col-md-12
+    = f.label :carriages, class: 'col-md-2 control-label'
+    .col-md-4
+      - if train.available_carriages.any?
+        = f.collection_select :carriage_ids, train.available_carriages, :id, :number, {},
+          multiple: true, class: 'form-control'
+      - else
+        . = t '.create_or_free_carriage'
+    br
+        
+  div.form-group.col-md-12
+    = f.submit i18n_submit(train), class: 'btn btn-default'

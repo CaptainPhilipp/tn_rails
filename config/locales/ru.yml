@@ -1,9 +1,12 @@
 ru:
-  show: 'Показать'
-  create: 'Создать'
-  update: 'Изменить'
+  show:    'Показать'
+  edit:    'Редактировать'
+  create:  'Создать'
+  buy:     'Купить'
+  update:  'Изменить'
   destroy: 'Удалить'
-  home: 'Домой'
+  home:    'Домой'
+  search:  'Поиск'
   admin:
     railway_stations:
       update:

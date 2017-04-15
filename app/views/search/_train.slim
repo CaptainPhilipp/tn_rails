@@ -2,4 +2,4 @@ tr
   td = train.number
   td = train.route.title
   - if @departure_id && @arrival_id
-    td = link_to 'Купить билет', new_tickets_path(train, @departure_id, @arrival_id)
+    td = link_to 'Купить билет', new_tickets_path(train, @departure_id, @arrival_id), class: 'btn btn-default'

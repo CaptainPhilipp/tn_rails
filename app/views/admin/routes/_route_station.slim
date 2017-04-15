@@ -1,0 +1,10 @@
+- station = route_station
+tr
+  td = check_box_tag :route_railway_station_id, station.id, true, name: 'route[railway_station_ids][]'
+  td = link_to station.title, [:admin ,station]
+  = form_tag change_position_admin_railway_station_path(station)
+    td = number_field_tag :sort_key, station.sort_key_in(@route), class: 'form-control'
+    td = time_field_tag :arrival_time, station.arrival_time_in(@route), class: 'form-control'
+    td = time_field_tag :departure_time, station.departure_time_in(@route), class: 'form-control'
+    td = hidden_field_tag :route_id, {selected: @route.id}, class: 'form-control'
+    td = submit_tag 'Изменить', class: 'btn btn-default'

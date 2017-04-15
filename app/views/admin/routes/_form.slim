@@ -5,7 +5,15 @@
     = f.label :title
     = f.text_field :title
     
-  = render 'route_stations', route: route
+  = f.label :stations
+    table
+      tr
+        th оставить
+        th Название
+        th Позиция
+        th Прибытие
+        th Отправление
+      = render partial: 'route_station', collection: route.ordered_stations
           
   div.action
     = f.submit 'Удалить не отмеченные'

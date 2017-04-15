@@ -1,0 +1,8 @@
+div.navbar-collapse.collapse.navbar-responsive-collapse
+  ul.nav.navbar-nav
+    - scope = 'activerecord.models'
+    li = link_to t(:search), new_search_path
+    li = link_to t(:route,           scope: scope, count: :_other), admin_routes_path
+    li = link_to t(:railway_station, scope: scope, count: :_other), admin_railway_stations_path
+    li = link_to t(:train,           scope: scope, count: :_other), admin_trains_path
+    li = link_to t(:carriage,        scope: scope, count: :_other), admin_carriages_path

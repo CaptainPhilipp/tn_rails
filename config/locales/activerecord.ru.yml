@@ -1,14 +1,25 @@
 ru:
   activerecord:
     models:
-      carriage: 'Вагон'
-      railway_station: 'Станция'
-      route: 'Маршрут'
-      ticket: 'Билет'
-      train: 'Поезд'
-      user: 'Пользователь'
+      carriage:
+        one:   'Вагон'
+        other: 'Вагоны'
+      railway_station:
+        one:   'Станция'
+        other: 'Станции'
+      route:
+        one:   'Маршрут'
+        other: 'Маршруты'
+      ticket:
+        one:   'Билет'
+        other: 'Билеты'
+      train:
+        one:   'Поезд'
+        other: 'Поезда'
+      user:
+        one:   'Пользователь'
+        other: 'Пользователи'
     attributes:
-
       route:
         departure: 'Отправление'
         arrival: 'Прибытие'
@@ -23,6 +34,15 @@ ru:
         number: 'Номер'
         train: 'Поезд'
         type: 'Тип'
+        top_places: 'Верхние места'
+        bottom_places: 'Нижние места'
+        side_top_places: 'Верхние боковые места'
+        side_bottom_places: 'Нижние боковые места'
+        seat_places: 'Сидячие места'
+        CoupeCarriage: 'Купе'
+        EconomyCarriage: 'Плацкарт'
+        FirstClassCarriage: 'СВ'
+        SeatCarriage: 'Сидячий'
       ticket:
         train: 'Поезд'
         departure: 'Отправление'

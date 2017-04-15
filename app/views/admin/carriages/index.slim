@@ -1,20 +1,20 @@
 h1 Вагоны
 
-table
+table.table.table-hover
   thead
     tr
-      th Номер
-      th Тип
-      th Верхние места
-      th Нижние места
-      th Боковые нижние места
-      th Боковые верхние места
-      th Сидячие места
-      th Поезд
+      - scope = 'activerecord.attributes.carriage'
+      th = t('number', scope: scope)
+      th = t('type', scope: scope)
+      th = t('top_places', scope: scope)
+      th = t('bottom_places', scope: scope)
+      th = t('side_top_places', scope: scope)
+      th = t('side_bottom_places', scope: scope)
+      th = t('seat_places', scope: scope)
+      th = t('train', scope: scope)
       th colspan="3"
-
-  tbody
-    = render partial: 'admin/carriages/carriage', collection: @carriages
+  tbody.table-hover
+    = render partial: 'carriage', collection: @carriages
 br
 
 = link_to 'Новый вагон', @train_id ? new_admin_train_carriage_path : new_admin_carriage_path

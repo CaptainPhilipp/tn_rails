@@ -2,17 +2,17 @@
   = render 'common/error', resource: carriage
   
   div.field
-    = f.label :number
+    = f.label :number, class: "col-md-2 control-label"
     = f.text_field :number
   
   - if carriage.type
     - carriage.class.place_fields.each do |place_field|
       div.field
-        = f.label place_field
+        = f.label place_field, class: "col-md-2 control-label"
         = f.text_field place_field
 
   div.field
-    = f.label :train
+    = f.label :train, class: "col-md-2 control-label"
     - if @train
       . = @train.number
       f.hidden_field :train_id, @train.id
@@ -20,8 +20,8 @@
       = f.collection_select :train_id, Train.all, :id, :number, include_blank: true
     
   div.field
-    = f.label :type
+    = f.label :type, class: "col-md-2 control-label"
     = f.collection_select :type, Carriage::TYPES, :type, :ru
 
   div.action
-    = f.submit i18n_submit(carriage.becomes(Carriage))
+    = f.submit i18n_submit(carriage.becomes(Carriage)), class: 'btn btn-default'
