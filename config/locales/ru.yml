@@ -1,14 +1,15 @@
 ru:
-  account: 'Аккаунт'
   show:    'Показать'
   edit:    'Редактировать'
   create:  'Создать'
-  buy:     'Купить'
   update:  'Изменить'
   destroy: 'Удалить'
-  home:    'Домой'
-  search:  'Поиск'
-  keep:    'Оставить'
+
+  common:
+    buy:     'Купить'
+    search:  'Поиск'
+    account: 'Аккаунт'
+    keep:    'Оставить'
   admin:
     railway_stations:
       update:

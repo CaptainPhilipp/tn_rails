@@ -25,4 +25,4 @@
   = hidden_field_tag :arrival_id, @arrival.id, name: 'ticket[arrival_id]'
   = hidden_field_tag :train_id, @train.id, name: 'ticket[train_id]'
   
-  div.form-group = f.submit i18n_submit(ticket, t(:buy)), class: 'btn btn-default'
+  div.form-group = f.submit i18n_submit(ticket, t('common.buy')), class: 'btn btn-default'
