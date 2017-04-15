@@ -3,6 +3,8 @@ class Carriage < ApplicationRecord
 
   validates :serial, uniqueness: { scope: :train_id }
   validates :type, presence: true
+  validates_with CarriageValidateType
+
   before_validation :set_serial
 
   TYPES = %w(EconomyCarriage
