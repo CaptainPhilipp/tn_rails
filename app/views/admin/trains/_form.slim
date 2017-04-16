@@ -1,18 +1,18 @@
 = form_for([:admin, train], class: 'form-horizontal') do |f|
   = render 'common/error', resource: train
   
-  = render 'common/form/text_field', f: f, key: :number
+  = render 'common/form/text_field', form: f, key: :number
 
-  = render 'common/form/collection_select', f: f, key: :route, collection: Route.all
+  = render 'common/form/collection_select', form: f, key: :route, collection: Route.all
     
-  = render 'common/form/collection_select', f: f, key: :current_station, collection: RailwayStation.all
+  = render 'common/form/collection_select', form: f, key: :current_station, collection: RailwayStation.all
 
   - if train.available_carriages.any?
-    = render 'common/form/collection_select', f: f, key: :carriages, method: :carriage_ids,
+    = render 'common/form/collection_select', form: f, key: :carriages, method: :carriage_ids,
       collection: train.available_carriages, html_options: {multiple: true}
   -else
-    = render 'common/form/form-group', f: f, key: :carriages do
+    = render 'common/form/form-group', form: f, key: :carriages do
       . = t '.create_or_free_carriage'
     br
 
-  = render 'common/form/submit', f: f, object: train
+  = render 'common/form/submit', form: f, object: train
