@@ -1,11 +1,11 @@
-p
-  strong Название: 
-  = @railway_station.title
+ld
+  dt Название: 
+  dd = @railway_station.title
   
-ul
-  strong Поезда на станции:
-  - @railway_station.trains.each do |train|
-    li = link_to train.number, [:admin ,train]
+  dt Поезда на станции:
+    li
+    - @railway_station.trains.each do |train|
+      ul = link_to train.number, [:admin ,train]
 
 p #{link_to 'Редактировать', edit_admin_railway_station_path(@railway_station)} | 
   #{link_to 'К станциям', admin_railway_stations_path}
