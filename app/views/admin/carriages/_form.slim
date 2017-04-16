@@ -1,21 +1,20 @@
 = form_for([:admin, carriage.becomes(Carriage)]) do |f|
   = render 'common/error', resource: carriage
   
-  = render 'layouts/form/text_field', form: f, key: :number
+  = render_texf_field f, :number
   
   - if carriage.type
     - carriage.class.place_fields.each do |place_field|
-      = render 'layouts/form/text_field', form: f, key: place_field
+      = render_texf_field f, place_field
 
   - if @train
-    = render 'layouts/form/form-group', form: f, key: :type do
+    = render_labled_form_group f, :type do
       . = @train.number
       f.hidden_field :train_id, @train.id
   - else
-    = render 'layouts/form/collection_select', form: f, key: :train
-      options: { collection: Train.all, options: {include_blank: true} }
+    = render_collection_select f, :train, Train.all, :_, :_, :_, {include_blank: true}, {}
 
-  = render 'layouts/form/form-group', form: f, key: :type do
-    = f.select :type, options_for_select(carriage_options_for_select)
+  = render_labled_form_group f, :type do
+    = f.select :type, options_for_select(carriage_options_for_select), {}, class: 'form-control'
 
-  = render 'layouts/form/submit', form: f, object: carriage.becomes(Carriage)
+  = render_submit f, carriage.becomes(Carriage)

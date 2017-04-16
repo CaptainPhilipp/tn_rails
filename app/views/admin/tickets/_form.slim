@@ -1,20 +1,16 @@
 = form_for([:admin, ticket]) do |f|
   = render 'common/error', resource: ticket
+  
+  = render_collection_select f, :user, @users, :_, :_, :_, selected: ticket.user_id
 
-  = render 'layouts/form/collection_select', form: f, key: :user,
-    options: { collection: @users, options: {selected: ticket.user_id} }
+  = render_collection_select f, :train, @trains, :_, :_, :_, selected: ticket.train_id
 
-  = render 'layouts/form/collection_select', form: f, key: :train,
-    options: { collection: @trains, options: {selected: ticket.train_id} }
-    
-  = render 'layouts/form/collection_select', form: f, key: :departure_id,
-    options: { collection: @stations, options: {selected: ticket.departure_id} }
-    
-  = render 'layouts/form/collection_select', form: f, key: :arrival_id,
-    options: { collection: @stations, options: {selected: ticket.arrival_id} }
-    
-  = render 'layouts/form/text_field', form: f, key: :passeneger_name
-    
-  = render 'layouts/form/text_field', form: f, key: :passeneger_document
+  = render_collection_select f, :departure, @stations, :_, :_, :_, selected: ticket.departure_id
 
-  = render 'layouts/form/submit', form: f, object: ticket
+  = render_collection_select f, :arrival, @stations, :_, :_, :_, selected: ticket.arrival_id
+    
+  = render_texf_field f, :passeneger_name
+    
+  = render_texf_field f, :passeneger_document
+
+  = render_submit f, ticket
