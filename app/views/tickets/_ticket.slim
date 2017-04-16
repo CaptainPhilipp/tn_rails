@@ -3,4 +3,5 @@ tr
   td = ticket.departure.title
   td = ticket.arrival.title
   td = ticket.train.number
-  td = link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Уверены?' }
+  td = link_to t(:show), ticket
+  td = link_to t(:destroy), ticket, method: :delete, data: { confirm: 'Уверены?' }
