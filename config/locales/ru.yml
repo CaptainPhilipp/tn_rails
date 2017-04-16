@@ -28,8 +28,10 @@ ru:
       edit:
         train_editing: 'Редактирование поезда'
         to_trains: 'К поездам'
+      new:
+        new_train: 'Новый поезд'
       form:
-        create_or_free_carriage: 'Создайте новый свободный вагон, или открепите существующий от поезда'
+        create_or_free_carriage: 'У поезда нет вагонов, так же нет других свободных вагонов'
         # submit: '%{action} поезд'
   # tickets:
   #   form:

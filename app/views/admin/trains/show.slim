@@ -1,28 +1,19 @@
-p
-  strong Номер: 
-  = @train.number
+dl.dl-horizontal
+  dt = @train.class.human_attribute_name :number 
+  dd = @train.number
 
-p
-  strong Маршрут: 
-  = @train.route ? link_to(@train.route.title, [:admin ,@train.route]) : 'Нет маршрута'
+  dt = @train.route.model_name.human
+  dd = @train.route ? link_to(@train.route.title, [:admin, @train.route]) : 'Нет маршрута'
   
-p
-  strong Станция: 
-  = link_to @train.current_station.title, [:admin ,@train.current_station]
+  dt = @train.current_station.model_name.human
+  dd = link_to @train.current_station.title, [:admin, @train.current_station]
   
-p
-  strong Вагоны:
-div
-  - @train.carriages.each do |car|
-    div
-      = "[#{car.serial}] "
-      = link_to(car.number, admin_carriage_path(car)) + \
-        " #{car.type.titleize}; #{car.place_counts_string * ', '}"
-div
-  . Всего вагонов: #{@train.carriages.size}
-  . Всего мест: #{@train.places_total}
-  br
-  = link_to 'Вагоны поезда', admin_carriages_path(@train)
+  dt Всего вагонов
+  dd = @train.carriages.size
+  
+  dt Всего мест
+  dd = @train.places_total
 
 p #{link_to 'Редактировать', edit_admin_train_path(@train)} | 
+  #{link_to 'Вагоны поезда', admin_train_carriages_path(@train)} | 
   #{link_to 'К поездам', admin_trains_path}

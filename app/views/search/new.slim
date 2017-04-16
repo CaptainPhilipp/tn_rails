@@ -6,7 +6,8 @@ div.row
     div.form-group.col-md-4
       = collection_select :railway_station, :arrival_id, @stations, :id, :title, {selected: @arrival_id}, {class: 'form-control'}
 
-    div.form-group.col-md-4 = submit_tag 'Найти подходящие поезда', class: 'btn btn-default'
+    div.form-group.col-md-4
+      = submit_tag 'Найти подходящие поезда', class: 'btn btn-default'
 
   table.table
     thead

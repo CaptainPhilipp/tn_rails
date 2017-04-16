@@ -1,4 +1,15 @@
-en:
+en: # всё равно ругается на отсутствие перевода в некоторых местах =\
+  show:    'Show'
+  edit:    'Edit'
+  create:  'Create'
+  update:  'Update'
+  destroy: 'Destroy'
+
+  common:
+    buy:     'Buy'
+    search:  'Search'
+    account: 'Account'
+    keep:    'Keep'
   admin:
     railway_stations:
       update:
