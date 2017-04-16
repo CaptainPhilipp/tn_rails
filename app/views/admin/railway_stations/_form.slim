@@ -1,6 +1,6 @@
 = form_for([:admin, railway_station]) do |f|
   = render 'common/error', resource: railway_station
-  div.field
-    = f.label :title
-    = f.text_field :title
-  = f.submit
+
+  = render 'common/form/text_field', f: f, key: :title
+  
+  = render 'common/form/submit', f: f, object: railway_station
