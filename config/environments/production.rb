@@ -81,6 +81,10 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.action_mailer.default_url_options = { host: 'thinknetica-tutu.herokuapp.com' }
+  config.action_mailer.delivery_method = :sendgrid
+  config.action_mailer.sendgrid_settings = { api_token: ENV['SENDGRID_API_KEY'] }
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
