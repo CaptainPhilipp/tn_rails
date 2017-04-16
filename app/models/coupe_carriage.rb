@@ -1,4 +1,4 @@
 class CoupeCarriage < Carriage
-  extend CollectionFields
+  include CollectionFields
   collection_sum_fields :bottom_places, :top_places
 end

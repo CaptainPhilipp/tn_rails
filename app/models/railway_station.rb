@@ -12,15 +12,15 @@ class RailwayStation < ApplicationRecord
   }
 
   def arrival_time_in(route)
-    rel_railway_stations_route(route).arrival_time
+    link_attribute(route, :arrival_time)
   end
 
   def departure_time_in(route)
-    rel_railway_stations_route(route).departure_time
+    link_attribute(route, :departure_time)
   end
 
   def sort_key_in(route)
-    rel_railway_stations_route(route).sort_key
+    link_attribute(route, :sort_key)
   end
 
   def rel_railway_stations_route(route)
@@ -28,6 +28,11 @@ class RailwayStation < ApplicationRecord
   end
 
   private
+
+  def link_attribute(route, attribute)
+    link = rel_railway_stations_route(route)
+    link ? link.send(attribute) : nil
+  end
 
   def route_id(route)
     route.is_a?(Route) ? route.id : route

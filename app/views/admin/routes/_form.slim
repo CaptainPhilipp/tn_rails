@@ -1,11 +1,21 @@
-= form_for(route) do |f|
+= form_for([:admin, route]) do |f|
   = render 'common/error', resource: route
   
-  div.field
+  div.form-group
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, class: 'form-control'
     
-  = render 'route_stations', route: route
+  = f.label :stations
+    table
+      tr
+        scope = '@'
+        th = t('common.keep')
+        th = Route.human_attribute_name :title
+        th = Route.human_attribute_name :position
+        th = Route.human_attribute_name :arrival
+        th = Route.human_attribute_name :departure
+      = render partial: 'route_station', collection: route.ordered_stations
+      = render partial: 'route_station', collection: RailwayStation.all
           
-  div.action
-    = f.submit 'Удалить не отмеченные'
+  div
+    = f.submit 'Удалить не отмеченные', class: 'btn btn-default'

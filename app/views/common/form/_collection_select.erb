@@ -1,0 +1,19 @@
+<%
+  sample = collection.first
+
+  method ||= "#{key}_id"
+  value_method ||= :id
+  text_method ||=
+    if sample.respond_to?(:title)
+      :title
+    elsif sample.respond_to?(:number)
+      :number
+    end
+  options ||= {}
+  html_options ||= {}
+  html_options = {class: 'form-control'}.merge(html_options)
+%>
+
+<%= render 'common/form/form-group', f: f, key: key do %>
+  <%= f.collection_select method, collection, value_method, text_method, options, html_options %>
+<% end %>

@@ -18,5 +18,7 @@ module Tutu
     config.eager_load_paths += %W(
       #{config.root}/app/services
     )
+
+    config.i18n.default_locale = :ru
   end
 end

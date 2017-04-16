@@ -1,23 +1,20 @@
-p
-  strong Номер: 
-  = @carriage.number
+dl.dl-horizontal
+  dt = Carriage.human_attribute_name :number 
+  dd = @carriage.number
 
-p
-  strong Тип: 
-  = @carriage.type
+  dt = Carriage.human_attribute_name :type
+  dd = @carriage.type
   
-- @carriage.class.place_fields.each do |place_field|
-  p
-    = "#{place_field.to_s.titleize}: "
-    = @carriage.send place_field
+  - @carriage.class.place_fields.each do |place_field|
+      dt = Carriage.human_attribute_name place_field
+      dd = @carriage.send place_field
   
-p
-  strong Поезд: 
-  - if @carriage.train
-    = link_to @carriage.train.number, [:admin ,@carriage.train]
-  - else
-    a none
+  dt
+    | Поезд
+    - if @carriage.train
+      dd = link_to @carriage.train.number, [:admin ,@carriage.train]
+    - else
+      dd none
 
-
-p #{link_to 'Редактировать', edit_admin_carriage_path(@carriage)} | 
+p #{link_to t(:edit), edit_admin_carriage_path(@carriage)} | 
   #{link_to 'К вагонам', admin_carriages_path}

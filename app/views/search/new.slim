@@ -1,17 +1,19 @@
-= form_tag new_search_path do
-  div.field
-    = collection_select :railway_station, :departure_id, @stations, :id, :title, selected: @departure_id
+div.row
+  = form_tag new_search_path do
+    div.form-group.col-md-4
+      = collection_select :railway_station, :departure_id, @stations, :id, :title, {selected: @departure_id}, {class: 'form-control'}
 
-  div.field
-    = collection_select :railway_station, :arrival_id, @stations, :id, :title, selected: @arrival_id
+    div.form-group.col-md-4
+      = collection_select :railway_station, :arrival_id, @stations, :id, :title, {selected: @arrival_id}, {class: 'form-control'}
 
-  div = submit_tag 'Найти подходящие поезда'
+    div.form-group.col-md-4
+      = submit_tag 'Найти подходящие поезда', class: 'btn btn-default'
 
-  table
+  table.table
     thead
       tr
         th Номер
         th colspan="2" Маршрут
 
-    tbody
+    tbody.table-hover
       = render partial: 'search/train', collection: @trains

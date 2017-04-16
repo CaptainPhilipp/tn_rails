@@ -1,0 +1,43 @@
+ru:
+  show:    'Показать'
+  edit:    'Редактировать'
+  create:  'Создать'
+  update:  'Изменить'
+  destroy: 'Удалить'
+
+  common:
+    buy:     'Купить'
+    search:  'Поиск'
+    account: 'Аккаунт'
+    keep:    'Оставить'
+  admin:
+    railway_stations:
+      update:
+        success: 'Станция была успешно изменена.'
+      create:
+        success: 'Станция была успешно создана.'
+      destroy:
+        success: 'Станция была успешно удалена.'
+    trains:
+      update:
+        success: 'Поезд была успешно изменен.'
+      create:
+        success: 'Поезд была успешно создан.'
+      destroy:
+        success: 'Поезд была успешно удален.'
+      edit:
+        train_editing: 'Редактирование поезда'
+        to_trains: 'К поездам'
+      new:
+        new_train: 'Новый поезд'
+      form:
+        create_or_free_carriage: 'У поезда нет вагонов, так же нет других свободных вагонов'
+        # submit: '%{action} поезд'
+  # tickets:
+  #   form:
+      # submit: '%{action} билет'
+  # layouts:
+  #   admin_header:
+  #     home: 'Домой'
+  #   header:
+  #     home: 'Домой'

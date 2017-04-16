@@ -1,4 +1,4 @@
 class SeatCarriage < Carriage
-  extend CollectionFields
+  include CollectionFields
   collection_sum_fields :seat_places
 end

@@ -1,0 +1,63 @@
+ru:
+  activerecord:
+    models:
+      carriage:
+        one:   'Вагон'
+        other: 'Вагоны'
+      railway_station:
+        one:   'Станция'
+        other: 'Станции'
+      route:
+        one:   'Маршрут'
+        other: 'Маршруты'
+      ticket:
+        one:   'Билет'
+        other: 'Билеты'
+      train:
+        one:   'Поезд'
+        other: 'Поезда'
+      user:
+        one:   'Пользователь'
+        other: 'Пользователи'
+      CoupeCarriage: 'Купе'
+      EconomyCarriage: 'Плацкарт'
+      FirstClassCarriage: 'СВ'
+      SeatCarriage: 'Сидячий'
+    attributes:
+      route:
+        departure: 'Отправление'
+        arrival: 'Прибытие'
+        title: 'Название'
+        position: 'Порядок'
+      train:
+        route: 'Маршрут'
+        current_station: 'Текущая станция'
+        carriages: 'Вагоны'
+        number: 'Номер'
+        title: 'Название'
+      carriage:
+        number: 'Номер'
+        train: 'Поезд'
+        type: 'Тип'
+        top_places: 'Верхние места'
+        bottom_places: 'Нижние места'
+        side_top_places: 'Верхние боковые места'
+        side_bottom_places: 'Нижние боковые места'
+        seat_places: 'Сидячие места'
+      ticket:
+        train: 'Поезд'
+        departure: 'Отправление'
+        arrival: 'Прибытие'
+        passeneger_name: 'Имя пассажира'
+        passeneger_document: 'Документ пассажира'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        too_short: 'имеет слишком мало символов'
+        too_long: 'имеет слишком много символов'
+        taken: 'уже занят'
+      models:
+        carriage:
+          attributes:
+            type:
+              existance: 'Тип "%{type}" не существует'

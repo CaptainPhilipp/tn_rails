@@ -3,13 +3,14 @@ class Carriage < ApplicationRecord
 
   validates :serial, uniqueness: { scope: :train_id }
   validates :type, presence: true
+  validates_with CarriageValidateType
+
   before_validation :set_serial
 
-  CarType = Struct.new(:type, :ru)
-  TYPES   = [CarType.new('EconomyCarriage', 'Плацкарт'),
-             CarType.new('CoupeCarriage', 'Купе'),
-             CarType.new('FirstClassCarriage', 'СВ'),
-             CarType.new('SeatCarriage', 'Сидячий')].freeze
+  TYPES = %w(EconomyCarriage
+             CoupeCarriage
+             FirstClassCarriage
+             SeatCarriage).freeze
 
   scope :free, -> { where(train_id: nil) }
 
@@ -17,6 +18,6 @@ class Carriage < ApplicationRecord
 
   def set_serial
     return unless train
-    self.serial ||= train.carriages.maximum(:serial) + 1
+    self.serial ||= (train.carriages.maximum(:serial) || 0) + 1
   end
 end

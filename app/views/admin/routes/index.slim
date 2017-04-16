@@ -1,9 +1,10 @@
-h1 Маршруты
+h1 = t(Route.model_name.to_s.downcase, scope: 'activerecord.models', count: :_other)
+/ чот странно - должен же быть короче способ. human_name не работает
 
-table
+table.table
   thead
     tr
-      th title
+      th = Route.human_attribute_name :title
       th collspan="3"
 
   tbody

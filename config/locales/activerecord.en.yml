@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models: # всё равно ругается на отсутствие перевода в некоторых местах =\
+      carriage: 'Carriage'
+      railway_station: 'Station'
+      route: 'Route'
+      ticket: 'Ticket'
+      train: 'Train'
+      CoupeCarriage: 'Coupe'
+      EconomyCarriage: 'Economy'
+      FirstClassCarriage: 'FirstClass'
+      SeatCarriage: 'Seat'
+    errors:
+      models:
+        carriage:
+          attributes:
+            type:
+              existance: 'Type "%{type}" is not exists'
