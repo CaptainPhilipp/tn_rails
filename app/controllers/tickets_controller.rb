@@ -40,8 +40,8 @@ class TicketsController < ApplicationController
   end
 
   def check_ticket_owner
-    return true if current_user.id == @ticket.user_id
-    redirect_to tickets_url, notice: 'Can\'t access this ticket'
+    return true if current_user.id == @ticket.user_id || current_user.admin?
+    redirect_to tickets_url, alert: 'Can\'t access this ticket'
   end
 
   def ticket_context(params_)

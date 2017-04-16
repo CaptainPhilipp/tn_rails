@@ -3,4 +3,4 @@ a Здравствуйте, #{@user.name}!
 p Вы купили билет по маршруту #{@ticket.route_title}
 p На имя #{@ticket.passenger_name} (документ #{@ticket.passenger_document})
 p = link_to 'Посмотреть билет', ticket_url(@ticket, @locale_hash)
-p = link_to 'Все Ваши билеты', tickets_url(@locale_hash)
+p = link_to 'Посмотреть все билеты', tickets_url(@locale_hash)
