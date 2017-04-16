@@ -1,21 +1,21 @@
 = form_for(ticket, class: 'form-horizontal') do |f|
   = render 'common/error', resource: ticket
   
-  = render 'common/form/form-group', form: f, key: :train do
+  = render 'layouts/form/form-group', form: f, key: :train do
     div = @train.number
 
-  = render 'common/form/form-group', form: f, key: :departure do
+  = render 'layouts/form/form-group', form: f, key: :departure do
     div = @departure.title
       
-  = render 'common/form/form-group', form: f, key: :arrival do
+  = render 'layouts/form/form-group', form: f, key: :arrival do
     div = @arrival.title
 
-  = render 'common/form/text_field', form: f, key: :passeneger_name
+  = render 'layouts/form/text_field', form: f, key: :passeneger_name
     
-  = render 'common/form/text_field', form: f, key: :passeneger_document
+  = render 'layouts/form/text_field', form: f, key: :passeneger_document
     
   = hidden_field_tag :departure_id, @departure.id, name: 'ticket[departure_id]'
   = hidden_field_tag :arrival_id, @arrival.id, name: 'ticket[arrival_id]'
   = hidden_field_tag :train_id, @train.id, name: 'ticket[train_id]'
   
-  = render 'common/form/submit', form: f, object: ticket, translate_path: 'common.buy'
+  = render 'layouts/form/submit', form: f, object: ticket, translate_path: 'common.buy'

@@ -1,0 +1,3 @@
+<%= render 'layouts/form/form-group', form: form, key: key do %>
+  <%= form.collection_select *collection_select_options(key, options) %>
+<% end %>

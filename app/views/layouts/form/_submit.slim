@@ -1,5 +1,5 @@
 - translate_path ||= nil
 - t_submit = translate_path ? i18n_submit(object, t(translate_path)) : i18n_submit(object)
 
-= render 'common/form/base_div' do
+= render 'layouts/form/base_div' do
   = form.submit t_submit, class: 'btn btn-default'
