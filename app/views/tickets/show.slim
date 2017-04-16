@@ -13,12 +13,12 @@ div
   p = @arrival.title
 
 div
-  a = :passeneger_name
-  p = @ticket.passeneger_name
+  a = :passenger_name
+  p = @ticket.passenger_name
 
 div
-  a = :passeneger_document
-  p = @ticket.passeneger_document
+  a = :passenger_document
+  p = @ticket.passenger_document
 
 p #{link_to 'Удалить', @ticket, method: :delete, data: { confirm: 'Уверены?' }} | 
   #{link_to 'Edit', edit_admin_ticket_path} |
