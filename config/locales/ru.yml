@@ -10,6 +10,11 @@ ru:
     search:  'Поиск'
     account: 'Аккаунт'
     keep:    'Оставить'
+  tickets:
+    create:
+      success: 'Билет был успешно создан'
+    destroy:
+      success: 'Билет был успешно отменен'
   admin:
     railway_stations:
       update:
@@ -32,12 +37,10 @@ ru:
         new_train: 'Новый поезд'
       form:
         create_or_free_carriage: 'У поезда нет вагонов, так же нет других свободных вагонов'
-        # submit: '%{action} поезд'
-  # tickets:
-  #   form:
-      # submit: '%{action} билет'
-  # layouts:
-  #   admin_header:
-  #     home: 'Домой'
-  #   header:
-  #     home: 'Домой'
+    tickets:
+      create:
+        success: 'Ticket was successfully created'
+      update:
+        success: 'Ticket was successfully updated'
+      destroy:
+        success: 'Ticket was successfully destroyed'

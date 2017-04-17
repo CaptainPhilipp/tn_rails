@@ -1,7 +1,7 @@
 class Admin::TicketsController < Admin::BaseController
-  before_action :set_ticket, only: %i[show edit update destroy]
+  before_action :set_ticket, only: %i(show edit update destroy)
   before_action :any_ticket_context
-  before_action :concrete_ticket_context, only: %i[show edit new]
+  before_action :concrete_ticket_context, only: %i(show edit new)
 
   # GET /admin/tickets
   # GET /admin/tickets.json
@@ -26,7 +26,7 @@ class Admin::TicketsController < Admin::BaseController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to @ticket, notice: t('.success') }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class Admin::TicketsController < Admin::BaseController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.html { redirect_to @ticket, notice: t('.success') }
         format.json { render :show, status: :ok, location: @ticket }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class Admin::TicketsController < Admin::BaseController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to admin_tickets_url, notice: 'Ticket was successfully destroyed.' }
+      format.html { redirect_to admin_tickets_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -75,12 +75,12 @@ class Admin::TicketsController < Admin::BaseController
     @arrival   = @ticket.arrival || required[:arrival_id] && RailwayStation.find(required[:arrival_id])
   end
 
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_ticket
     @ticket = Ticket.find(params[:id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
   def ticket_params
     params.require(:ticket).permit(ticket_param_names)
   end
