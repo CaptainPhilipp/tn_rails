@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 class Seed
-  WAGON_TYPES = %w(CoupeCarriage FirstClassCarriage EconomyCarriage SeatCarriage)
+  WAGON_TYPES = %w(CoupeCarriage FirstClassCarriage EconomyCarriage SeatCarriage).freeze
 
   def stations(count)
-    alphabet = (?A..?Z).to_a
+    alphabet = ('A'..'Z').to_a
     count.times { RailwayStation.create(title: "Station-#{alphabet.shift * 2}") }
   end
 
@@ -27,7 +27,7 @@ class Seed
   end
 
   def trains(count, num_length = 4)
-    count.times { Train.create(number: generate_num(num_length)) }
+    count.times { Train.create(number: generate_num(num_length), current_station_id: RailwayStation.ids.sample) }
   end
 
   def trains_to_routes(trains, routes)
@@ -73,7 +73,7 @@ end
 
 seed = Seed.new
 
-seed.clear(RailwayStation, Train, Carriage)
+seed.clear(Carriage, Train, RailwayStation, Route)
 
 seed.stations 5
 seed.routes RailwayStation.all, 20
