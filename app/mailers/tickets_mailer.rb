@@ -1,5 +1,5 @@
 class TicketsMailer < ApplicationMailer
-  default from: 'ph-s@mail.ru'
+  default from: 'app66786727@heroku.com'
   before_action :set_locale_hash
 
   def buy_ticket(ticket)
