@@ -5,7 +5,9 @@ class Route < ApplicationRecord
 
   accepts_nested_attributes_for :rel_railway_stations_routes
 
-  validates :title, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :title, presence: true, length: { minimum: 2, maximum: 40 }
+
+  before_validation :set_title
 
   alias stations railway_stations
 
@@ -17,5 +19,17 @@ class Route < ApplicationRecord
     rel_railway_stations_routes
       .find_by(railway_station_id: railway_station.id)
       .update(sort_key: sort_key)
+  end
+
+  private
+
+  def set_title
+    return unless title.nil? || title.empty?
+    self.title =
+      if railway_stations.size > 1
+        "#{railway_stations.first.title} - #{railway_stations.last.title}"
+      else
+        ' - '
+      end
   end
 end

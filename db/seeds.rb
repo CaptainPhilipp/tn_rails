@@ -24,6 +24,7 @@ class Seed
         station.update_sort_key(route)
       end
     end
+    Route.all.each { |r| r.update title: '' } # для коллбэков
   end
 
   def trains(count, num_length = 4)
