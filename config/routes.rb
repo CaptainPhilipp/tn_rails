@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope '/:locale', locale: /en|ru/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: { locale: I18n.default_locale } do
     namespace :admin do
       resources :tickets
     end
