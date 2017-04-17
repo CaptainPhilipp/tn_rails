@@ -2,7 +2,8 @@ ld
   dt Название: 
   dd = @railway_station.title
   
-  dt Поезда на станции:
+  dt
+    | Поезда на станции:
     li
     - @railway_station.trains.each do |train|
       ul = link_to train.number, [:admin ,train]

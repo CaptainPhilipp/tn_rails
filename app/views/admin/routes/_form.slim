@@ -15,7 +15,6 @@
         th = Route.human_attribute_name :arrival
         th = Route.human_attribute_name :departure
       = render partial: 'route_station', collection: route.ordered_stations
-      = render partial: 'route_station', collection: RailwayStation.all
           
   div
     = f.submit 'Удалить не отмеченные', class: 'btn btn-default'

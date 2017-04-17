@@ -23,10 +23,10 @@ class SearchTrain
     depart.any? && arriv.any? && depart.first.sort_key < arriv.first.sort_key
   end
 
-  def routes_by_stations(*stations)
+  def routes_by_stations(*stations_ids)
     Route
       .eager_load(:rel_railway_stations_routes)
-      .where('rel_railway_stations_routes.railway_station_id IN (?)', stations)
+      .where('rel_railway_stations_routes.railway_station_id IN (?)', stations_ids)
   end
 
   def link_for_station(route, station_id)
