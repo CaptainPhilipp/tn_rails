@@ -1,0 +1,5 @@
+a Здравствуйте, #{@user.name}!
+
+p Билет по маршруту #{@ticket.route_title}, 
+| на имя #{@ticket.passenger_name}, был успешно отменен
+p = link_to 'Посмотреть все билеты', tickets_url(@locale_hash)

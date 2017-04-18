@@ -1,11 +1,11 @@
 h1 :tickets
 
-table
+table.table
   tr
     th Имя
-    th = 'departure_station'
-    th = 'arrival_station'
-    th = 'train_number'
+    th = @tickets.human_attribute_name :departure
+    th = @tickets.human_attribute_name :arrival
+    th = @tickets.human_attribute_name :train
   = render @tickets
 
 = link_to 'Найти новый билет', new_search_path

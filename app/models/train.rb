@@ -3,7 +3,7 @@ class Train < ApplicationRecord
   belongs_to :current_station, class_name: 'RailwayStation'
   has_many :tickets
 
-  has_many :carriages
+  has_many :carriages, dependent: :nullify
   has_many :coupe_carriages
   has_many :economy_carriages
   has_many :fist_class_carriages

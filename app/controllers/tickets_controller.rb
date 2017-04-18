@@ -12,9 +12,9 @@ class TicketsController < ApplicationController
   end
 
   def create
-    current_user.tickets.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
     if @ticket.save
-      redirect_to @ticket
+      redirect_to @ticket, notice: t('.success')
     else
       ticket_context(ticket_params)
       render :new
@@ -29,7 +29,7 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_to tickets_url, notice: 'Ticket was successfully destroyed.'
+    redirect_to tickets_url, notice: t('.success')
   end
 
   private
@@ -40,8 +40,8 @@ class TicketsController < ApplicationController
   end
 
   def check_ticket_owner
-    return true if current_user.id == @ticket.user_id
-    redirect_to tickets_url, notice: 'Can\'t access this ticket'
+    return true if current_user.id == @ticket.user_id || current_user.admin?
+    redirect_to tickets_url, alert: 'Can\'t access this ticket'
   end
 
   def ticket_context(params_)

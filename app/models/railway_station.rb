@@ -1,5 +1,5 @@
 class RailwayStation < ApplicationRecord
-  has_many :rel_railway_stations_routes
+  has_many :rel_railway_stations_routes, dependent: :destroy
   has_many :routes, through: :rel_railway_stations_routes
   has_many :trains, foreign_key: :current_station_id
 
@@ -25,6 +25,14 @@ class RailwayStation < ApplicationRecord
 
   def rel_railway_stations_route(route)
     rel_railway_stations_routes.find_by(route_id: route_id(route))
+  end
+
+  def update_sort_key(route)
+    links = RelRailwayStationsRoute.where(route_id: route_id(route)).to_a
+    link  = rel_railway_stations_route(route)
+    links.delete link
+    link.sort_key = links.any? ? links.max.sort_key + 1 : 0
+    link.save
   end
 
   private

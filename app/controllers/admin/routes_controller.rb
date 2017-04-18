@@ -34,7 +34,7 @@ class Admin::RoutesController < Admin::BaseController
   end
 
   def destroy
-    @route.delete
+    @route.destroy
     redirect_to admin_routes_path, notice: :success
   end
 

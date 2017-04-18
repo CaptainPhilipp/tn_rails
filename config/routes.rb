@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope '/:locale', locale: /en|ru/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: { locale: I18n.default_locale } do
     namespace :admin do
       resources :tickets
     end
@@ -26,8 +26,9 @@ Rails.application.routes.draw do
     resources :search, only: %i(new index) do
       post :new, action: :find, on: :new
     end
-    root 'static_pages#home'
+
+    root 'search#new'
   end
 
-  get '/', to: 'static_pages#home'
+  get '/', to: 'search#new'
 end

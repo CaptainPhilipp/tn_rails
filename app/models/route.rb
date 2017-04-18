@@ -1,12 +1,13 @@
 class Route < ApplicationRecord
-  has_many :rel_railway_stations_routes
+  has_many :rel_railway_stations_routes, dependent: :destroy
   has_many :railway_stations, through: :rel_railway_stations_routes
   has_many :trains
 
   accepts_nested_attributes_for :rel_railway_stations_routes
 
-  validates :title, presence: true, length: { minimum: 2, maximum: 20 }
-  validate :stations_count
+  validates :title, presence: true, length: { minimum: 2, maximum: 40 }
+
+  before_validation :set_title
 
   alias stations railway_stations
 
@@ -20,8 +21,15 @@ class Route < ApplicationRecord
       .update(sort_key: sort_key)
   end
 
-  def stations_count
-    return true if railway_stations.count >= 2
-    errors.add(:base, 'Should contain two and more stations')
+  private
+
+  def set_title
+    return unless title.nil? || title.empty?
+    self.title =
+      if railway_stations.size > 1
+        "#{railway_stations.first.title} - #{railway_stations.last.title}"
+      else
+        ' - '
+      end
   end
 end

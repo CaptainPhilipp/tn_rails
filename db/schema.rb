@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415230726) do
+ActiveRecord::Schema.define(version: 20170416202358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170415230726) do
     t.integer  "side_bottom_places", default: 0
     t.integer  "seat_places",        default: 0
     t.integer  "serial"
+    t.index ["id", "type"], name: "index_carriages_on_id_and_type", using: :btree
     t.index ["train_id"], name: "index_carriages_on_train_id", using: :btree
   end
 
@@ -55,12 +56,12 @@ ActiveRecord::Schema.define(version: 20170415230726) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "train_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "departure_id"
     t.integer  "arrival_id"
-    t.string   "passeneger_name"
-    t.integer  "passeneger_document"
+    t.string   "passenger_name"
+    t.integer  "passenger_document"
     t.index ["arrival_id"], name: "index_tickets_on_arrival_id", using: :btree
     t.index ["departure_id"], name: "index_tickets_on_departure_id", using: :btree
     t.index ["train_id"], name: "index_tickets_on_train_id", using: :btree
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170415230726) do
     t.integer  "current_station_id"
     t.boolean  "reverse_cars_sort",  default: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id", using: :btree
+    t.index ["route_id"], name: "index_trains_on_route_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
