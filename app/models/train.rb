@@ -3,13 +3,11 @@ class Train < ApplicationRecord
   belongs_to :current_station, class_name: 'RailwayStation'
   has_many :tickets
 
-  has_many :carriages
+  has_many :carriages, dependent: :nullify
   has_many :coupe_carriages
   has_many :economy_carriages
   has_many :fist_class_carriages
   has_many :seat_carriages
-
-  before_destroy :clear_carriages_links
 
   alias old_carriages carriages
 
@@ -27,12 +25,5 @@ class Train < ApplicationRecord
 
   def get_carriages(car_type, place_type)
     carriages.where(type: car_type).sum(place_type)
-  end
-
-  private
-
-  def clear_carriages_links
-    return if carriages.empty?
-    carriages.each { |car| car.update train_id: nil }
   end
 end

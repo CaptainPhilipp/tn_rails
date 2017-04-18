@@ -11,6 +11,8 @@ class Ticket < ApplicationRecord
     "#{departure.title} - #{arrival.title}"
   end
 
+  private
+
   def mail_notification_buy
     TicketsMailer.buy_ticket(self).deliver_now
   end
