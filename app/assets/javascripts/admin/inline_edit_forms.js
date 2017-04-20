@@ -8,6 +8,8 @@ $(document).on("turbolinks:load", function() {
     $("#edit_form_" + id).show();
   });
 
+
+
   $('.close_edit_form').click(function(e) {
     e.preventDefault();
     var id = $(this).data('objectId');
