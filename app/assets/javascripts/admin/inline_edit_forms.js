@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", function() {
   $('.open_edit_form').click(function() {
     var id = $(this).data('objectId');
     $(".edit_form").hide();
