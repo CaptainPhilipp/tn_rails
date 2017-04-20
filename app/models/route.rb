@@ -21,6 +21,10 @@ class Route < ApplicationRecord
       .update(sort_key: sort_key)
   end
 
+  def self.with_station(station_id)
+    joins(:rel_railway_stations_routes).where('rel_railway_stations_routes.railway_station_id = ?', station_id)
+  end
+
   private
 
   def set_title

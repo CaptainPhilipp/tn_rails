@@ -1,5 +1,5 @@
 class Admin::TrainsController < Admin::BaseController
-  include TrainsHelper
+  include Admin::TrainsHelper
   before_action :set_train, only: %i(show edit update destroy)
 
   # GET /trains
@@ -10,8 +10,7 @@ class Admin::TrainsController < Admin::BaseController
 
   # GET /trains/1
   # GET /trains/1.json
-  def show
-  end
+  def show; end
 
   # GET /trains/new
   def new
@@ -39,7 +38,8 @@ class Admin::TrainsController < Admin::BaseController
   # PATCH/PUT /trains/1.json
   def update
     if @train.update(train_params)
-      redirect_to [:admin, @train], notice: t('.success')
+      dstn = params[:redirect_show] ? [:admin, @train] : admin_trains_url
+      redirect_to dstn, notice: t('.success')
     else
       render :edit
     end

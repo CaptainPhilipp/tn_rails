@@ -13,5 +13,6 @@
     = render_labled_form_group f, :carriages do
       . = t('.create_or_free_carriage')
     br
-
+  = hidden_field_tag :redirect_show, true
+  
   = render_submit f, train
