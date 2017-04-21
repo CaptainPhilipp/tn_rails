@@ -13,8 +13,6 @@
   = render_labled_form_group f, :type do
     = f.select :type, options_for_select(carriage_options_for_select, selected: @carriage.type),
       { include_blank: true }, class: 'form-control'
-
-  div#current_type style="display: none" = carriage.type
   
   - Carriage::TYPES.each do |klass|
     div.carriage_type id="#{klass}" style="display: none"
