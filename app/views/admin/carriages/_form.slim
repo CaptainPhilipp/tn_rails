@@ -14,13 +14,10 @@
     = f.select :type, options_for_select(carriage_options_for_select, selected: @carriage.type),
       { include_blank: true }, class: 'form-control'
 
-
-
-  - if carriage.type
-    = render partial: 'place_field', collection: carriage.class.place_fields, locals: { form: f }
-  - else
-    - Carriage::TYPES.each do |klass|
-      div.carriage_type id="#{klass}" style="display: none"
-        = render partial: 'place_field', collection: klass.constantize.place_fields, locals: { form: f }
+  div#current_type style="display: none" = carriage.type
+  
+  - Carriage::TYPES.each do |klass|
+    div.carriage_type id="#{klass}" style="display: none"
+      = render partial: 'place_field', collection: klass.constantize.place_fields, locals: { form: f }
 
   = render_submit f, carriage.becomes(Carriage)

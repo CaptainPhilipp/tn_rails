@@ -5,7 +5,12 @@ $(document).on("turbolinks:load", function() {
     field_groups.hide();
     field_groups.find('input:text').val(0);
 
-    var type = $(this).find('option:selected').val();
+    var type = ""
+    if(type) {
+      type = $(this).find('option:selected').val();
+    } else {
+      type = $('#current_type').text();
+    }
     $("#" + type).show();
   });
 });
