@@ -26,13 +26,17 @@ class Route < ApplicationRecord
       .where('rel_railway_stations_routes.railway_station_id = ?', station_id)
   end
 
+  def stops
+    [railway_stations.size - 2, 0].max
+  end
+
   private
 
   def set_title
     return unless title.nil? || title.empty?
     self.title =
       if railway_stations.size > 1
-        "#{railway_stations.first.title} - #{railway_stations.last.title}"
+        "#{railway_stations.first.title} - #{railway_stations.last.title} : #{stops}"
       else
         ' - '
       end
