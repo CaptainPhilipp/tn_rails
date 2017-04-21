@@ -26,4 +26,14 @@ class Train < ApplicationRecord
   def get_carriages(car_type, place_type)
     carriages.where(type: car_type).sum(place_type)
   end
+
+  def possible_stations
+    return RailwayStation.all if route_id.nil?
+    route.railway_stations
+  end
+
+  def possible_routes
+    return Route.all if current_station_id.nil?
+    Route.with_station(current_station_id)
+  end
 end

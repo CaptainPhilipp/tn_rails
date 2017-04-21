@@ -27,7 +27,8 @@ class Admin::RoutesController < Admin::BaseController
 
   def update
     if @route.update(route_params)
-      render :show, notice: :success
+      dstn = params[:redirect_show] ? [:admin, @route] : admin_routes_url
+      redirect_to dstn, notice: :success
     else
       render :edit
     end

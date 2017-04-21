@@ -1,7 +1,18 @@
-tr
+- id = train.id
+
+tr.edit_row.open_edit_form data-object-id="#{id}" id="edit_row_#{id}"
   td = train.number
+  td = train.route.title
+  td = train.current_station.title
   td = link_to 'Показать', [:admin ,train]
   td = link_to 'Редактировать', edit_admin_train_path(train)
   td = link_to 'Удалить', [:admin ,train], method: :delete, data: { confirm: 'Уверены?' }
-  - if @departure_id && @arrival_id
-    td = link_to 'Купить билет', new_tickets_path(train, @departure_id, @arrival_id)
+  
+tr.edit_form id="edit_form_#{id}" style="display: none"
+  = form_for [:admin, train] do |f|
+    td = f.text_field :number
+    td = f.collection_select :route_id, train.possible_routes, :id, :title, { include_blank: :true }, { class: 'form-control' }
+    td = f.collection_select :current_station_id, train.possible_stations, :id, :title, {}, { class: 'form-control' }
+    td = link_to 'Изменить вагоны', edit_admin_train_path(train)
+    td = f.submit t(:update), class: 'form-control'
+    td = button_tag t(:cancel), class: 'form-control close_edit_form', data: { object_id: id }

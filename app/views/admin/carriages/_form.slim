@@ -2,19 +2,20 @@
   = render 'common/error', resource: carriage
   
   = render_texf_field f, :number
-  
-  - if carriage.type
-    - carriage.class.place_fields.each do |place_field|
-      = render_texf_field f, place_field
 
   - if @train
     = render_labled_form_group f, :type do
       . = @train.number
       f.hidden_field :train_id, @train.id
   - else
-    = render_collection_select f, :train, Train.all, :_, :_, :_, {include_blank: true}, {}
+    = render_collection_select f, :train, Train.all, :_, :_, :_, { include_blank: true }, {}
 
   = render_labled_form_group f, :type do
-    = f.select :type, options_for_select(carriage_options_for_select), {}, class: 'form-control'
+    = f.select :type, options_for_select(carriage_options_for_select, selected: @carriage.type),
+      { include_blank: true }, class: 'form-control'
+  
+  - Carriage::TYPES.each do |klass|
+    div.carriage_type id="#{klass}" style="display: none"
+      = render partial: 'place_field', collection: klass.constantize.place_fields, locals: { form: f }
 
   = render_submit f, carriage.becomes(Carriage)

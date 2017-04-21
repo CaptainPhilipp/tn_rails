@@ -17,4 +17,5 @@
       = render partial: 'route_station', collection: route.ordered_stations
           
   div
+    = hidden_field_tag :redirect_show, true
     = f.submit 'Изменить', class: 'btn btn-default'

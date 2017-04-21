@@ -1,5 +1,14 @@
-tr
-  td = route.title
+- id = route.id
+
+tr.edit_row id="edit_row_#{id}"
+  td.open_edit_form data-object-id="#{id}" = route.title
   td = link_to 'Показать', [:admin ,route]
   td = link_to 'Редактировать', edit_admin_route_path(route)
   td = link_to 'Удалить', [:admin ,route], method: :delete, data: { confirm: 'Уверены?' }
+  
+  tr.edit_form id="edit_form_#{id}" style="display: none"
+    = form_for [:admin, route] do |f|
+      td = f.text_field :title, class: 'form-control'
+      td = link_to 'Редактировать станции', edit_admin_route_path(route)
+      td = f.submit t(:update), class: 'form-control'
+      td = button_tag t(:cancel), class: 'form-control close_edit_form', data: { object_id: id }

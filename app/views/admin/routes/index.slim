@@ -1,7 +1,7 @@
 h1 = t(Route.model_name.to_s.downcase, scope: 'activerecord.models', count: :_other)
 / чот странно - должен же быть короче способ. human_name не работает
 
-table.table
+table.table.table-hover
   thead
     tr
       th = Route.human_attribute_name :title
